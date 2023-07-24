@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "376509089497",
+    "project_id": "mundocai",
+    "storage_bucket": "mundocai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376509089497:android:497784c85c18f8bc7be0c8",
+        "android_client_info": {
+          "package_name": "com.example.mundocai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376509089497-6kt3lcb8p9e70s49j40v4da82rk3h69j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDycyVp_GPLGOLNh4xqf1Yn0fkv55c5EN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "376509089497-6kt3lcb8p9e70s49j40v4da82rk3h69j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
