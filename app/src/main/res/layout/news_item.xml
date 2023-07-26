@@ -16,7 +16,7 @@
         app:cardCornerRadius="10dp">
 
         <ImageView
-            android:id="@+id/news_image_backdrop"
+            android:id="@+id/news_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -27,9 +27,11 @@
         <TextView
             android:id="@+id/news_tittle"
             android:layout_margin="8dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Este jugador de Independiente empezó a preocupar a todos"
+            tools:text="Otra noche de nada: Independiente empató sin goles con Vélez"
             android:layout_gravity="bottom">
 
         </TextView>
