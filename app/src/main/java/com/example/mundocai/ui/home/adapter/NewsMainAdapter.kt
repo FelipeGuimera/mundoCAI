@@ -7,18 +7,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mundocai.core.BaseViewHolder
 import com.example.mundocai.data.model.News
-import com.example.mundocai.databinding.NewsItemBinding
+import com.example.mundocai.databinding.NewsItemMainBinding
 
-class NewsAdapter (private val newsList: List<News>): RecyclerView.Adapter<BaseViewHolder<*>>(){
+class NewsMainAdapter (private val newsList: List<News>): RecyclerView.Adapter<BaseViewHolder<*>>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
-        val itemBinding = NewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return NewsViewHolder(itemBinding, parent.context)
+        val itemMainBinding = NewsItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return NewsMainViewHolder(itemMainBinding, parent.context)
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
         when(holder){
-            is NewsViewHolder -> holder.bind(newsList[position])
+            is NewsMainViewHolder -> holder.bind(newsList[position])
         }
     }
 
@@ -26,13 +26,13 @@ class NewsAdapter (private val newsList: List<News>): RecyclerView.Adapter<BaseV
 
 }
 
-private class NewsViewHolder(
-    val binding: NewsItemBinding,
+private class NewsMainViewHolder(
+    val binding: NewsItemMainBinding,
     val context: Context
 ): BaseViewHolder<News>(binding.root){
     override fun bind(item: News) {
-        Glide.with(context).load(item.image_news).centerCrop().into(binding.newsImage)
-        binding.newsTittle.text = item.title_news
+        Glide.with(context).load(item.image_news).centerCrop().into(binding.newsImageMain)
+        binding.newsMainTittle.text = item.title_news
 
     }
 }

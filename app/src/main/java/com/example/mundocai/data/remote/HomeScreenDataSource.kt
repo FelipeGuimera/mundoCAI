@@ -17,4 +17,6 @@ class HomeScreenDataSource {
         }
         return Resource.Success(newsList)
     }
+
+
 }

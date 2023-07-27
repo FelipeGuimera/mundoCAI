@@ -8,3 +8,5 @@ data class News(
     val description_news: String = "",
     val news_date: Timestamp? = null
 )
+
+data class NewsList(val results: List<News> = listOf())
