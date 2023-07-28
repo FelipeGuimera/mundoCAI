@@ -8,7 +8,7 @@ import com.example.mundocai.databinding.NewsMainHomeRowBinding
 import com.example.mundocai.ui.home.adapter.NewsAdapter
 import com.example.mundocai.ui.home.adapter.NewsMainAdapter
 
-class NewsMainConcatAdapter (private val newsAdapter: NewsMainAdapter) : RecyclerView.Adapter<BaseConcatHolder<*>>() {
+class NewsMainConcatAdapter (private val newsMainAdapter: NewsMainAdapter) : RecyclerView.Adapter<BaseConcatHolder<*>>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseConcatHolder<*> {
         val itemBinding = NewsMainHomeRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ConcatViewHolder(itemBinding)
@@ -16,7 +16,7 @@ class NewsMainConcatAdapter (private val newsAdapter: NewsMainAdapter) : Recycle
 
     override fun onBindViewHolder(holder: BaseConcatHolder<*>, position: Int) {
         when (holder) {
-            is ConcatViewHolder -> holder.bind(newsAdapter)
+            is ConcatViewHolder -> holder.bind(newsMainAdapter)
         }
     }
 

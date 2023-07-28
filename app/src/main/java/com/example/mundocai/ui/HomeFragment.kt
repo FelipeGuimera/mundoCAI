@@ -10,13 +10,16 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.example.mundocai.R
 import com.example.mundocai.core.Resource
 import com.example.mundocai.data.model.News
+import com.example.mundocai.data.model.NewsMain
 import com.example.mundocai.data.remote.HomeScreenDataSource
 import com.example.mundocai.databinding.FragmentHomeBinding
 import com.example.mundocai.domain.HomeScreenRepoImpl
 import com.example.mundocai.presentation.HomeScreenViewModel
 import com.example.mundocai.presentation.HomeScreenViewModelFactory
 import com.example.mundocai.ui.home.adapter.NewsAdapter
+import com.example.mundocai.ui.home.adapter.NewsMainAdapter
 import com.example.mundocai.ui.home.adapter.concat.NewsConcatAdapter
+import com.example.mundocai.ui.home.adapter.concat.NewsMainConcatAdapter
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -34,7 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         concatAdapter = ConcatAdapter()
 
-        viewModel.fetchLatestNews().observe(viewLifecycleOwner, Observer{  result ->
+        viewModel.fetchLatestMainNews().observe(viewLifecycleOwner, Observer{  result ->
             when (result) {
                 is Resource.Loading<*> -> {
                     binding.progressBar.visibility = View.VISIBLE
@@ -43,7 +46,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 is Resource.Success<*> -> {
                     binding.progressBar.visibility = View.GONE
                     concatAdapter.apply {
-                        addAdapter(0, NewsConcatAdapter(NewsAdapter(result.data as List<News>)))
+                        addAdapter(NewsMainConcatAdapter(NewsMainAdapter(result.data as List<NewsMain>)))
+
+
                     }
                     binding.rvHome.adapter = concatAdapter
                 }

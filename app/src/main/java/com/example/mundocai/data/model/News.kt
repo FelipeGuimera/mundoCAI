@@ -10,3 +10,5 @@ data class News(
 )
 
 data class NewsList(val results: List<News> = listOf())
+
+
