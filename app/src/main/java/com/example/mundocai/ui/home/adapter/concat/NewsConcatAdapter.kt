@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mundocai.core.BaseConcatHolder
 import com.example.mundocai.databinding.NewsHomeRowBinding
-import com.example.mundocai.ui.home.adapter.NewsAdapter
-import com.example.mundocai.ui.home.adapter.NewsMainAdapter
+import com.example.mundocai.ui.home.adapter.NewsSmallAdapter
 
-class NewsConcatAdapter(private val newsAdapter: NewsAdapter) : RecyclerView.Adapter<BaseConcatHolder<*>>() {
+class NewsConcatAdapter(private val newsAdapter: NewsSmallAdapter) :
+    RecyclerView.Adapter<BaseConcatHolder<*>>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseConcatHolder<*> {
-        val itemBinding = NewsHomeRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemBinding =
+            NewsHomeRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ConcatViewHolder(itemBinding)
     }
 
@@ -22,8 +23,9 @@ class NewsConcatAdapter(private val newsAdapter: NewsAdapter) : RecyclerView.Ada
 
     override fun getItemCount(): Int = 1
 
-    private inner class ConcatViewHolder(private val binding: NewsHomeRowBinding) : BaseConcatHolder<NewsAdapter>(binding.root) {
-        override fun bind(adapter: NewsAdapter) {
+    private inner class ConcatViewHolder(private val binding: NewsHomeRowBinding) :
+        BaseConcatHolder<NewsSmallAdapter>(binding.root) {
+        override fun bind(adapter: NewsSmallAdapter) {
             binding.rvNews.adapter = adapter
         }
     }

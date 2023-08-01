@@ -1,11 +1,11 @@
 package com.example.mundocai.domain
 
-import com.example.mundocai.core.Resource
-import com.example.mundocai.data.model.News
-import com.example.mundocai.data.model.NewsMain
+
+import com.example.mundocai.data.model.NewsList
+
 
 interface HomeScreenRepo {
-    suspend fun getLatestNews(): Resource<List<News>>
+    suspend fun getLatestNews(): NewsList
 
-    suspend fun getLatestNewsMain(): Resource<List<NewsMain>>
+    suspend fun getLatestNewsMain(): NewsList
 }

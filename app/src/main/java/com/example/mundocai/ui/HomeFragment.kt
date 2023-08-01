@@ -1,23 +1,22 @@
 package com.example.mundocai.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ConcatAdapter
 import com.example.mundocai.R
 import com.example.mundocai.core.Resource
 import com.example.mundocai.data.model.News
-import com.example.mundocai.data.model.NewsMain
 import com.example.mundocai.data.remote.HomeScreenDataSource
 import com.example.mundocai.databinding.FragmentHomeBinding
 import com.example.mundocai.domain.HomeScreenRepoImpl
 import com.example.mundocai.presentation.HomeScreenViewModel
 import com.example.mundocai.presentation.HomeScreenViewModelFactory
-import com.example.mundocai.ui.home.adapter.NewsAdapter
-import com.example.mundocai.ui.home.adapter.NewsMainAdapter
+import com.example.mundocai.ui.home.adapter.NewsMediumAdapter
+import com.example.mundocai.ui.home.adapter.NewsSmallAdapter
 import com.example.mundocai.ui.home.adapter.concat.NewsConcatAdapter
 import com.example.mundocai.ui.home.adapter.concat.NewsMainConcatAdapter
 
@@ -37,17 +36,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         concatAdapter = ConcatAdapter()
 
-        viewModel.fetchLatestMainNews().observe(viewLifecycleOwner, Observer{  result ->
+        viewModel.fetchLatestNews().observe(viewLifecycleOwner, Observer{  result ->
             when (result) {
-                is Resource.Loading<*> -> {
+                is Resource.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                 }
 
-                is Resource.Success<*> -> {
+                is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     concatAdapter.apply {
-                        addAdapter(NewsMainConcatAdapter(NewsMainAdapter(result.data as List<NewsMain>)))
 
+                        addAdapter(0,NewsMainConcatAdapter(NewsMediumAdapter(result.data.first.results)))
+                        addAdapter(1, NewsConcatAdapter(NewsSmallAdapter(result.data.second.results)))
 
                     }
                     binding.rvHome.adapter = concatAdapter

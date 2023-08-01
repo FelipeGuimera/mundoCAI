@@ -9,13 +9,22 @@ import kotlinx.coroutines.Dispatchers
 
 class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
 
-    fun fetchLatestMainNews() = liveData(Dispatchers.IO) {
+    fun fetchLatestNews() = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(repo.getLatestNewsMain())
-        }catch (e: Exception){
+            emit(
+                Resource.Success(
+                    Pair(
+                        repo.getLatestNewsMain(),
+                        repo.getLatestNews(),
+
+                    )
+                )
+            )
+        } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
+
     }
 
 }
