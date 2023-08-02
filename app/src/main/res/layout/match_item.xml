@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="vertical"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="8dp"
+        android:layout_width="350dp"
+        android:layout_height="125dp"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/local_team_img"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="start"
+            android:src="@drawable/escudoindependiente">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/game_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/mada_medium"
+            android:textStyle="bold"
+            android:textColor="#353434"
+            tools:text="sab | 14/02/2023 | 15:30">
+        </TextView>
+
+        <TextView
+            android:id="@+id/stadium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="45dp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/mada_bold"
+            android:textStyle="bold"
+            android:textColor="#090909"
+            tools:text="Libertadores de America">
+        </TextView>
+
+        <ImageView
+            android:id="@+id/away_team_img"
+            android:layout_marginTop="20dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="end"
+            android:src="@drawable/velez">
+        </ImageView>
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="8dp"
+            android:backgroundTint="#C7EAE4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp">
+            <TextView
+                android:id="@+id/l_or_v"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="L"
+                android:textSize="10dp"
+                android:fontFamily="@font/mada_extra_bold"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="#090909">
+            </TextView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="8dp"
+            android:backgroundTint="#C7EAE4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="35dp">
+            <TextView
+                android:id="@+id/local_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="3"
+                android:textSize="20dp"
+                android:fontFamily="@font/mada_extra_bold"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="#090909">
+            </TextView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="8dp"
+            android:backgroundTint="#C7EAE4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="35dp">
+            <TextView
+                android:id="@+id/away_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="1"
+                android:textSize="20dp"
+                android:fontFamily="@font/mada_extra_bold"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="#090909">
+            </TextView>
+        </androidx.cardview.widget.CardView>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/appbar_scrolling_view_behavior"
+        android:layout_gravity="center"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/black">
+
+    </TextView>
+
+</LinearLayout>

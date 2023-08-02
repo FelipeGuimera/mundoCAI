@@ -1,5 +1,7 @@
 package com.example.mundocai.data.remote
 
+import com.example.mundocai.data.model.Matchs
+import com.example.mundocai.data.model.MatchsList
 import com.example.mundocai.data.model.News
 import com.example.mundocai.data.model.NewsList
 import com.google.firebase.firestore.FirebaseFirestore
@@ -29,5 +31,16 @@ class HomeScreenDataSource {
         return NewsList(newsMainList)
     }
 
+    suspend fun getLatestMatchs(): MatchsList {
+        val matchsList = mutableListOf<Matchs>()
+        val querySnapshot = FirebaseFirestore.getInstance().collection("matchs").get().await()
+
+        for(post in querySnapshot.documents){
+            post.toObject(Matchs::class.java)?.let { fbMatchs ->
+                matchsList.add(fbMatchs)
+            }
+        }
+        return MatchsList(matchsList)
+    }
 
 }

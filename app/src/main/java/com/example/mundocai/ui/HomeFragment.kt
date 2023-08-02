@@ -15,8 +15,10 @@ import com.example.mundocai.databinding.FragmentHomeBinding
 import com.example.mundocai.domain.HomeScreenRepoImpl
 import com.example.mundocai.presentation.HomeScreenViewModel
 import com.example.mundocai.presentation.HomeScreenViewModelFactory
+import com.example.mundocai.ui.home.adapter.MatchsHomeAdapters
 import com.example.mundocai.ui.home.adapter.NewsMediumAdapter
 import com.example.mundocai.ui.home.adapter.NewsSmallAdapter
+import com.example.mundocai.ui.home.adapter.concat.MatchsConcatAdapter
 import com.example.mundocai.ui.home.adapter.concat.NewsConcatAdapter
 import com.example.mundocai.ui.home.adapter.concat.NewsMainConcatAdapter
 
@@ -45,9 +47,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     concatAdapter.apply {
-
-                        addAdapter(0,NewsMainConcatAdapter(NewsMediumAdapter(result.data.first.results)))
-                        addAdapter(1, NewsConcatAdapter(NewsSmallAdapter(result.data.second.results)))
+                        addAdapter(0,MatchsConcatAdapter(MatchsHomeAdapters(result.data.first.results)))
+                        addAdapter(1,NewsMainConcatAdapter(NewsMediumAdapter(result.data.second.results)))
+                        addAdapter(2, NewsConcatAdapter(NewsSmallAdapter(result.data.third.results)))
 
                     }
                     binding.rvHome.adapter = concatAdapter

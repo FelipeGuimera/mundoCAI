@@ -14,7 +14,8 @@ class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
         try {
             emit(
                 Resource.Success(
-                    Pair(
+                    Triple(
+                        repo.getLatestMatchs(),
                         repo.getLatestNewsMain(),
                         repo.getLatestNews(),
 
