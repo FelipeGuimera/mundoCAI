@@ -7,17 +7,24 @@
     android:orientation="vertical"
     android:padding="8dp">
 
+    <TextView
+        android:layout_marginStart="8dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HISTORIA"
+        android:textColor="#EC1C24"
+        android:textSize="18sp"
+        android:fontFamily="@font/jost_extrabold"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_matchs_home"
+        android:id="@+id/rv_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/match_item">
+        tools:listitem="@layout/history_item">
     </androidx.recyclerview.widget.RecyclerView>
-
-
-
-
 
 </LinearLayout>

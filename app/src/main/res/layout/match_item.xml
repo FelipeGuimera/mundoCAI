@@ -30,7 +30,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:layout_marginStart="10dp"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/mada_medium"
             android:textStyle="bold"
@@ -42,7 +41,6 @@
             android:id="@+id/stadium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="45dp"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/mada_bold"
@@ -54,6 +52,7 @@
         <ImageView
             android:id="@+id/away_team_img"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="end"
@@ -122,19 +121,7 @@
             </TextView>
         </androidx.cardview.widget.CardView>
 
-
-
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/appbar_scrolling_view_behavior"
-        android:layout_gravity="center"
-        android:textSize="10dp"
-        android:textStyle="bold"
-        android:textColor="@color/black">
-
-    </TextView>
 
 </LinearLayout>

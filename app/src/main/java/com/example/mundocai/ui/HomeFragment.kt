@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mundocai.R
 import com.example.mundocai.core.Resource
 import com.example.mundocai.data.model.News
@@ -15,9 +16,11 @@ import com.example.mundocai.databinding.FragmentHomeBinding
 import com.example.mundocai.domain.HomeScreenRepoImpl
 import com.example.mundocai.presentation.HomeScreenViewModel
 import com.example.mundocai.presentation.HomeScreenViewModelFactory
+import com.example.mundocai.ui.home.adapter.HistoryHomeAdapter
 import com.example.mundocai.ui.home.adapter.MatchsHomeAdapters
 import com.example.mundocai.ui.home.adapter.NewsMediumAdapter
 import com.example.mundocai.ui.home.adapter.NewsSmallAdapter
+import com.example.mundocai.ui.home.adapter.concat.HistoryConcatAdapter
 import com.example.mundocai.ui.home.adapter.concat.MatchsConcatAdapter
 import com.example.mundocai.ui.home.adapter.concat.NewsConcatAdapter
 import com.example.mundocai.ui.home.adapter.concat.NewsMainConcatAdapter
@@ -47,12 +50,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     concatAdapter.apply {
-                        addAdapter(0,MatchsConcatAdapter(MatchsHomeAdapters(result.data.first.results)))
-                        addAdapter(1,NewsMainConcatAdapter(NewsMediumAdapter(result.data.second.results)))
-                        addAdapter(2, NewsConcatAdapter(NewsSmallAdapter(result.data.third.results)))
+                        addAdapter(0,MatchsConcatAdapter(MatchsHomeAdapters(result.data.t1.results)))
+                        addAdapter(1,NewsMainConcatAdapter(NewsMediumAdapter(result.data.t2.results)))
+                        addAdapter(2, NewsConcatAdapter(NewsSmallAdapter(result.data.t3.results)))
+                        addAdapter(3, HistoryConcatAdapter(HistoryHomeAdapter(result.data.t4.results)))
 
                     }
                     binding.rvHome.adapter = concatAdapter
+
                 }
 
                 is Resource.Failure -> {
