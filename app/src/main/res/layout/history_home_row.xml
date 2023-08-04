@@ -9,14 +9,19 @@
 
     <TextView
         android:layout_marginStart="8dp"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="HISTORIA"
         android:textColor="#EC1C24"
         android:textSize="18sp"
-        android:fontFamily="@font/jost_extrabold"
-        />
+        android:fontFamily="@font/jost_extrabold" />
+
+    <LinearLayout
+        android:layout_marginStart="8dp"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#ACACAC"
+        android:orientation="horizontal" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history"
