@@ -14,7 +14,10 @@
         android:text="HISTORIA"
         android:textColor="#EC1C24"
         android:textSize="18sp"
-        android:fontFamily="@font/jost_extrabold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_extra_bold">
+
+    </TextView>
 
     <LinearLayout
         android:layout_marginStart="8dp"
