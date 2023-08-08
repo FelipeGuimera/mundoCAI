@@ -57,6 +57,18 @@ class HomeScreenDataSource {
             }
         }
         return HistoryList(historyList)
+
+    }
+
+    suspend fun getInvite(): InviteList {
+        val inviteList = mutableListOf<Invite>()
+        val querySnapshot = FirebaseFirestore.getInstance().collection("invite").get().await()
+        for (post in querySnapshot.documents) {
+            post.toObject(Invite::class.java)?.let { fbInvite->
+                inviteList.add(fbInvite)
+            }
+        }
+        return InviteList(inviteList)
     }
 
 }

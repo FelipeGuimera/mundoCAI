@@ -16,14 +16,8 @@ import com.example.mundocai.databinding.FragmentHomeBinding
 import com.example.mundocai.domain.HomeScreenRepoImpl
 import com.example.mundocai.presentation.HomeScreenViewModel
 import com.example.mundocai.presentation.HomeScreenViewModelFactory
-import com.example.mundocai.ui.home.adapter.HistoryHomeAdapter
-import com.example.mundocai.ui.home.adapter.MatchsHomeAdapters
-import com.example.mundocai.ui.home.adapter.NewsMediumAdapter
-import com.example.mundocai.ui.home.adapter.NewsSmallAdapter
-import com.example.mundocai.ui.home.adapter.concat.HistoryConcatAdapter
-import com.example.mundocai.ui.home.adapter.concat.MatchsConcatAdapter
-import com.example.mundocai.ui.home.adapter.concat.NewsConcatAdapter
-import com.example.mundocai.ui.home.adapter.concat.NewsMainConcatAdapter
+import com.example.mundocai.ui.home.adapter.*
+import com.example.mundocai.ui.home.adapter.concat.*
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -54,6 +48,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         addAdapter(1,NewsMainConcatAdapter(NewsMediumAdapter(result.data.t2.results)))
                         addAdapter(2, NewsConcatAdapter(NewsSmallAdapter(result.data.t3.results)))
                         addAdapter(3, HistoryConcatAdapter(HistoryHomeAdapter(result.data.t4.results)))
+                        addAdapter(4, InviteConcatAdapter(InviteHomeAdapter(result.data.t5.results)))
 
                     }
                     binding.rvHome.adapter = concatAdapter

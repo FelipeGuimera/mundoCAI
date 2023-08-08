@@ -14,11 +14,12 @@ class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
         try {
             emit(
                 Resource.Success(
-                    NTuple4(
+                    NTuple5(
                         repo.getLatestMatchs(),
                         repo.getLatestNewsMain(),
                         repo.getLatestNews(),
                         repo.getLatestHistory(),
+                        repo.getInvite(),
 
                     )
                 )
@@ -40,4 +41,4 @@ class HomeScreenViewModelFactory(private val repo: HomeScreenRepo): ViewModelPro
 
 }
 
-data class NTuple4<T1, T2, T3, T4>(val t1: T1, val t2: T2, val t3: T3, val t4: T4)
+data class NTuple5<T1, T2, T3, T4, T5>(val t1: T1, val t2: T2, val t3: T3, val t4: T4, val t5: T5)
