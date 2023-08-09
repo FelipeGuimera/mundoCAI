@@ -71,4 +71,15 @@ class HomeScreenDataSource {
         return InviteList(inviteList)
     }
 
+    suspend fun getImages(): ImagesList {
+        val imagesList = mutableListOf<Images>()
+        val querySnapshot = FirebaseFirestore.getInstance().collection("images").get().await()
+        for (post in querySnapshot.documents) {
+            post.toObject(Images::class.java)?.let { fbImages->
+                imagesList.add(fbImages)
+            }
+        }
+        return ImagesList(imagesList)
+    }
+
 }

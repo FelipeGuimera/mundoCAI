@@ -7,12 +7,13 @@
     android:orientation="vertical"
     android:padding="8dp">
 
+
     <TextView
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HISTORIA"
+        android:text="IMÁGENES"
         android:textColor="#EC1C24"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -28,12 +29,12 @@
         android:orientation="horizontal" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_history"
+        android:id="@+id/rv_img_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/history_item">
+        tools:listitem="@layout/images_item">
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

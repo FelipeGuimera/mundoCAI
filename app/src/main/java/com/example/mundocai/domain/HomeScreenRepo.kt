@@ -1,10 +1,7 @@
 package com.example.mundocai.domain
 
 
-import com.example.mundocai.data.model.HistoryList
-import com.example.mundocai.data.model.InviteList
-import com.example.mundocai.data.model.MatchsList
-import com.example.mundocai.data.model.NewsList
+import com.example.mundocai.data.model.*
 
 
 interface HomeScreenRepo {
@@ -17,4 +14,6 @@ interface HomeScreenRepo {
     suspend fun getLatestHistory(): HistoryList
 
     suspend fun getInvite(): InviteList
+
+    suspend fun getImages(): ImagesList
 }

@@ -49,6 +49,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         addAdapter(2, NewsConcatAdapter(NewsSmallAdapter(result.data.t3.results)))
                         addAdapter(3, HistoryConcatAdapter(HistoryHomeAdapter(result.data.t4.results)))
                         addAdapter(4, InviteConcatAdapter(InviteHomeAdapter(result.data.t5.results)))
+                        addAdapter(5, ImagesConcatAdapter(ImagesHomeAdapter(result.data.t6.results)))
 
                     }
                     binding.rvHome.adapter = concatAdapter

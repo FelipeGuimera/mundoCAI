@@ -1,9 +1,6 @@
 package com.example.mundocai.domain
 
-import com.example.mundocai.data.model.HistoryList
-import com.example.mundocai.data.model.InviteList
-import com.example.mundocai.data.model.MatchsList
-import com.example.mundocai.data.model.NewsList
+import com.example.mundocai.data.model.*
 import com.example.mundocai.data.remote.HomeScreenDataSource
 
 class HomeScreenRepoImpl(private val dataSource: HomeScreenDataSource): HomeScreenRepo {
@@ -17,4 +14,7 @@ class HomeScreenRepoImpl(private val dataSource: HomeScreenDataSource): HomeScre
     override suspend fun getLatestHistory(): HistoryList = dataSource.getLatestHistory()
 
     override suspend fun getInvite(): InviteList = dataSource.getInvite()
+
+    override suspend fun getImages(): ImagesList = dataSource.getImages()
+
 }
