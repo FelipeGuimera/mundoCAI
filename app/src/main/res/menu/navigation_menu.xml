@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/homeFragment"
-        android:icon="@drawable/escudoiconosvg"
+        android:icon="@drawable/escudoindependiente"
         android:title="INICIO"/>
 
     <item android:id="@+id/matchsFragment"
-        android:icon="@drawable/ic_baseline_sports_soccer_24"
+        android:icon="@drawable/soccerfield"
         android:title="PARTIDOS"/>
 
     <item android:id="@+id/quizFragment"
@@ -14,7 +14,7 @@
         android:title="QUIZ"/>
 
     <item android:id="@+id/profileFragment"
-        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:icon="@drawable/perfil"
         android:title="PERFIL"/>
 
 </menu>

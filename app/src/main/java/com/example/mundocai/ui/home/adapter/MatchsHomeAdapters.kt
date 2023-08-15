@@ -11,6 +11,8 @@ import com.example.mundocai.databinding.MatchItemBinding
 
 class MatchsHomeAdapters (private val matchsList: List<Matchs>): RecyclerView.Adapter<BaseViewHolder<*>>(){
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         val itemBinding = MatchItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val holder = MatchsViewHolder(itemBinding, parent.context)
@@ -24,7 +26,7 @@ class MatchsHomeAdapters (private val matchsList: List<Matchs>): RecyclerView.Ad
         }
     }
 
-    override fun getItemCount(): Int = matchsList.size
+    override fun getItemCount(): Int = minOf(5, matchsList.size)
 
 
     private inner class MatchsViewHolder(val binding: MatchItemBinding, val context: Context): BaseViewHolder<Matchs>(binding.root){

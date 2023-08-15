@@ -11,11 +11,21 @@ import com.example.mundocai.data.model.News
 import com.example.mundocai.databinding.NewsItemMainBinding
 
 
-class NewsMediumAdapter (private val newsList: List<News>): RecyclerView.Adapter<BaseViewHolder<*>>(){
+class NewsMediumAdapter (private val newsList: List<News>, private val itemClickListener: OnNewsClickListener): RecyclerView.Adapter<BaseViewHolder<*>>(){
+
+    interface OnNewsClickListener{
+        fun OnNewsClick(news: News)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         val itemBinding = NewsItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val holder = NewsViewHolder(itemBinding, parent.context)
+
+        itemBinding.root.setOnClickListener{
+            val position = holder.bindingAdapterPosition.takeIf { it != DiffUtil.DiffResult.NO_POSITION }
+                ?: return@setOnClickListener
+            itemClickListener.OnNewsClick(newsList[position])
+        }
 
         return holder
     }
