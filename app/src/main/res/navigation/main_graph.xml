@@ -10,26 +10,23 @@
         android:name="com.example.mundocai.ui.HomeFragment"
         android:label="fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_matchFragment"
+            android:id="@+id/action_homeFragment_to_matchsFragment"
             app:destination="@id/matchsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_newsDetailsFragment"
+            app:destination="@id/newsDetailsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_quizFragment"
             app:destination="@id/quizFragment" />
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_newsDetailsFragment"
-            app:destination="@id/newsDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/matchsFragment"
         android:name="com.example.mundocai.ui.matchs.MatchsFragment"
         android:label="fragment_matchs"
         tools:layout="@layout/fragment_matchs" >
-        <action
-            android:id="@+id/action_matchsFragment_to_quizFragment"
-            app:destination="@id/quizFragment" />
         <action
             android:id="@+id/action_matchsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -38,11 +35,7 @@
         android:id="@+id/profileFragment"
         android:name="com.example.mundocai.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
-        <action
-            android:id="@+id/action_profileFragment_to_newsDetailsFragment"
-            app:destination="@id/newsDetailsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/quizFragment"
         android:name="com.example.mundocai.ui.quiz.QuizFragment"
@@ -61,9 +54,6 @@
         <argument
             android:name="titleNews"
             app:argType="string" />
-        <action
-            android:id="@+id/action_newsDetailsFragment_to_matchsFragment"
-            app:destination="@id/matchsFragment" />
         <action
             android:id="@+id/action_newsDetailsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />

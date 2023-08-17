@@ -8,6 +8,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.mundocai.R
 import com.example.mundocai.databinding.FragmentNewsDetailsBinding
+import java.util.*
 
 class NewsDetailsFragment : Fragment(R.layout.fragment_news_details) {
 
@@ -18,13 +19,13 @@ class NewsDetailsFragment : Fragment(R.layout.fragment_news_details) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNewsDetailsBinding.bind(view)
 
-            binding.backButton.setOnClickListener {
+        binding.backButton.setOnClickListener {
             // Aquí navega al home fragment usando NavController
             findNavController().navigate(R.id.action_newsDetailsFragment_to_homeFragment)
         }
 
         Glide.with(requireContext()).load(args.imageNews).centerCrop().into(binding.newsImage)
-        binding.title.text = args.titleNews
+        binding.title.text = args.titleNews.uppercase()
         binding.txtDescription.text = args.descriptionNews
 
 

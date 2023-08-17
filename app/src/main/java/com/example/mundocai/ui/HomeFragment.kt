@@ -8,7 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.example.mundocai.R
 import com.example.mundocai.core.Resource
 import com.example.mundocai.data.model.Matchs
@@ -46,9 +45,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), NewsMediumAdapter.OnNewsC
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     concatAdapter.apply {
-                        addAdapter(0,MatchsConcatAdapter(MatchsHomeAdapters(result.data.t1.results)))
+                        addAdapter(0,MatchsConcatAdapter(MatchsHomeAdapters(result.data.t1.results, this@HomeFragment)))
                         addAdapter(1,NewsMainConcatAdapter(NewsMediumAdapter(result.data.t2.results, this@HomeFragment)))
-                        addAdapter(2, NewsConcatAdapter(NewsSmallAdapter(result.data.t3.results)))
+                        addAdapter(2, NewsConcatAdapter(NewsSmallAdapter(result.data.t3.results, this@HomeFragment)))
                         addAdapter(3, HistoryConcatAdapter(HistoryHomeAdapter(result.data.t4.results)))
                         addAdapter(4, InviteConcatAdapter(InviteHomeAdapter(result.data.t5.results)))
                         addAdapter(5, ImagesConcatAdapter(ImagesHomeAdapter(result.data.t6.results)))
@@ -76,10 +75,15 @@ class HomeFragment : Fragment(R.layout.fragment_home), NewsMediumAdapter.OnNewsC
             news.description_news,
             news.image_news,
             news.title_news,
-
         )
         findNavController().navigate(action)
     }
 
+    fun OnMatchsClick(matchs: Matchs) {
+        val action = HomeFragmentDirections.actionHomeFragmentToMatchsFragment()
+
+        findNavController().navigate(action)
+
+    }
 
 }
