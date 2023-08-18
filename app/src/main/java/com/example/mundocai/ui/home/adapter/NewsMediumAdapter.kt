@@ -9,9 +9,10 @@ import com.bumptech.glide.Glide
 import com.example.mundocai.core.BaseViewHolder
 import com.example.mundocai.data.model.News
 import com.example.mundocai.databinding.NewsItemMainBinding
+import com.example.mundocai.ui.HomeFragment
 
 
-class NewsMediumAdapter (private val newsList: List<News>, private val itemClickListener: OnNewsClickListener): RecyclerView.Adapter<BaseViewHolder<*>>(){
+class NewsMediumAdapter (private val newsList: List<News>, private val itemClickListener: HomeFragment): RecyclerView.Adapter<BaseViewHolder<*>>(){
 
     interface OnNewsClickListener{
         fun OnNewsClick(news: News)

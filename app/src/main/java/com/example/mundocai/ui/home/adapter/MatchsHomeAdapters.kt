@@ -12,7 +12,7 @@ import com.example.mundocai.data.model.News
 import com.example.mundocai.databinding.MatchItemBinding
 import com.example.mundocai.ui.HomeFragment
 
-class MatchsHomeAdapters (private val matchsList: List<Matchs>, private val itemClickListener: HomeFragment): RecyclerView.Adapter<BaseViewHolder<*>>(){
+class MatchsHomeAdapters (private val matchsList: List<Matchs>, private val itemClickListener: OnMatchsClickListener): RecyclerView.Adapter<BaseViewHolder<*>>(){
 
     interface OnMatchsClickListener{
         fun OnMatchsClick(matchs: Matchs)

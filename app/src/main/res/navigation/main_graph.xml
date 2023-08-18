@@ -26,11 +26,7 @@
         android:id="@+id/matchsFragment"
         android:name="com.example.mundocai.ui.matchs.MatchsFragment"
         android:label="fragment_matchs"
-        tools:layout="@layout/fragment_matchs" >
-        <action
-            android:id="@+id/action_matchsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_matchs" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.mundocai.ui.profile.ProfileFragment"

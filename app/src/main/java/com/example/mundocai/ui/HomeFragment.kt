@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import com.example.mundocai.R
@@ -21,7 +22,7 @@ import com.example.mundocai.ui.home.adapter.*
 import com.example.mundocai.ui.home.adapter.concat.*
 
 
-class HomeFragment : Fragment(R.layout.fragment_home), NewsMediumAdapter.OnNewsClickListener{
+class HomeFragment : Fragment(R.layout.fragment_home), MatchsHomeAdapters.OnMatchsClickListener{
 
     private lateinit var binding: FragmentHomeBinding
     private val viewModel by viewModels<HomeScreenViewModel> { HomeScreenViewModelFactory(HomeScreenRepoImpl(
@@ -70,7 +71,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), NewsMediumAdapter.OnNewsC
 
     }
 
-    override fun OnNewsClick(news: News) {
+    fun OnNewsClick(news: News) {
         val action = HomeFragmentDirections.actionHomeFragmentToNewsDetailsFragment(
             news.description_news,
             news.image_news,
@@ -79,11 +80,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), NewsMediumAdapter.OnNewsC
         findNavController().navigate(action)
     }
 
-    fun OnMatchsClick(matchs: Matchs) {
+    override fun OnMatchsClick(matchs: Matchs) {
         val action = HomeFragmentDirections.actionHomeFragmentToMatchsFragment()
 
         findNavController().navigate(action)
-
     }
+
 
 }
