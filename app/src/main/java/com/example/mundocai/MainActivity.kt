@@ -1,10 +1,8 @@
 package com.example.mundocai
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import androidx.appcompat.app.ActionBar
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.mundocai.databinding.ActivityMainBinding
@@ -28,5 +26,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
     }
+
 }

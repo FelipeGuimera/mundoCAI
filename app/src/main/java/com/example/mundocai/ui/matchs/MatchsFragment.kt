@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.mundocai.MainActivity
 import com.example.mundocai.R
 import com.example.mundocai.databinding.FragmentMatchsBinding
 import com.example.mundocai.databinding.FragmentProfileBinding
