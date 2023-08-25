@@ -23,6 +23,11 @@
             app:destination="@id/newsDetailsFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToSaveState="true"/>
+        <action
+            android:id="@+id/action_homeFragment_to_historyDetailsFragment"
+            app:destination="@id/historyDetailsFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToSaveState="true"/>
     </fragment>
     <fragment
         android:id="@+id/matchsFragment"
@@ -54,6 +59,23 @@
             app:argType="string" />
         <argument
             android:name="title_news"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyDetailsFragment"
+        android:name="com.example.mundocai.ui.details.HistoryDetailsFragment"
+        android:label="HistoryDetailsFragment" >
+        <action
+            android:id="@+id/action_historyDetailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="description_history"
+            app:argType="string" />
+        <argument
+            android:name="image_history"
+            app:argType="string" />
+        <argument
+            android:name="tittle_history"
             app:argType="string" />
     </fragment>
 </navigation>

@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.example.mundocai.MainActivity
 import com.example.mundocai.R
 import com.example.mundocai.core.Resource
+import com.example.mundocai.data.model.History
+import com.example.mundocai.data.model.Invite
 import com.example.mundocai.data.model.Matchs
 import com.example.mundocai.data.model.News
 import com.example.mundocai.data.remote.HomeScreenDataSource
@@ -51,8 +53,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), MatchsHomeAdapters.OnMatc
                         addAdapter(0,MatchsConcatAdapter(MatchsHomeAdapters(result.data.t1.results, this@HomeFragment)))
                         addAdapter(1,NewsMainConcatAdapter(NewsMediumAdapter(result.data.t2.results, this@HomeFragment)))
                         addAdapter(2, NewsConcatAdapter(NewsSmallAdapter(result.data.t3.results, this@HomeFragment)))
-                        addAdapter(3, HistoryConcatAdapter(HistoryHomeAdapter(result.data.t4.results)))
-                        addAdapter(4, InviteConcatAdapter(InviteHomeAdapter(result.data.t5.results)))
+                        addAdapter(3, HistoryConcatAdapter(HistoryHomeAdapter(result.data.t4.results, this@HomeFragment)))
+                        addAdapter(4, InviteConcatAdapter(InviteHomeAdapter(result.data.t5.results, this@HomeFragment)))
                         addAdapter(5, ImagesConcatAdapter(ImagesHomeAdapter(result.data.t6.results)))
 
                     }
@@ -91,6 +93,27 @@ class HomeFragment : Fragment(R.layout.fragment_home), MatchsHomeAdapters.OnMatc
                     .build()
             )
     }
+
+    fun OnHistoryClick(history: History) {
+        val action = HomeFragmentDirections.actionHomeFragmentToHistoryDetailsFragment(
+            history.description_history,
+            history.image_history,
+            history.title_history,
+
+        )
+        findNavController().navigate(action)
+    }
+
+     fun OnInviteClick(invite: Invite) {
+        findNavController()
+            .navigate(R.id.quizFragment,
+                null,
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.homeFragment, true)
+                    .build()
+            )
+    }
+
 
 
 }

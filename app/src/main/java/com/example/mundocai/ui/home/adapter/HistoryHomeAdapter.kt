@@ -3,17 +3,30 @@ package com.example.mundocai.ui.home.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mundocai.core.BaseViewHolder
 import com.example.mundocai.data.model.History
+import com.example.mundocai.data.model.Invite
 import com.example.mundocai.databinding.HistoryItemBinding
+import com.example.mundocai.ui.HomeFragment
 
-class HistoryHomeAdapter (private val historyList: List<History>): RecyclerView.Adapter<BaseViewHolder<*>>(){
+class HistoryHomeAdapter (private val historyList: List<History>, private val itemClickListener: HomeFragment): RecyclerView.Adapter<BaseViewHolder<*>>(){
+
+    interface OnHistoryClickListener{
+        fun OnHistoryClick(history: History)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         val itemBinding = HistoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val holder = HistoryViewHolder(itemBinding, parent.context)
+
+        itemBinding.root.setOnClickListener{
+            val position = holder.bindingAdapterPosition.takeIf { it != DiffUtil.DiffResult.NO_POSITION }
+                ?: return@setOnClickListener
+            itemClickListener.OnHistoryClick(historyList[position])
+        }
 
         return holder
     }
