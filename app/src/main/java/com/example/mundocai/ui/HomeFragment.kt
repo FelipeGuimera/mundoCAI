@@ -13,10 +13,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.example.mundocai.MainActivity
 import com.example.mundocai.R
 import com.example.mundocai.core.Resource
-import com.example.mundocai.data.model.History
-import com.example.mundocai.data.model.Invite
-import com.example.mundocai.data.model.Matchs
-import com.example.mundocai.data.model.News
+import com.example.mundocai.data.model.*
 import com.example.mundocai.data.remote.HomeScreenDataSource
 import com.example.mundocai.databinding.FragmentHomeBinding
 import com.example.mundocai.domain.HomeScreenRepoImpl
@@ -55,7 +52,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), MatchsHomeAdapters.OnMatc
                         addAdapter(2, NewsConcatAdapter(NewsSmallAdapter(result.data.t3.results, this@HomeFragment)))
                         addAdapter(3, HistoryConcatAdapter(HistoryHomeAdapter(result.data.t4.results, this@HomeFragment)))
                         addAdapter(4, InviteConcatAdapter(InviteHomeAdapter(result.data.t5.results, this@HomeFragment)))
-                        addAdapter(5, ImagesConcatAdapter(ImagesHomeAdapter(result.data.t6.results)))
+                        addAdapter(5, ImagesConcatAdapter(ImagesHomeAdapter(result.data.t6.results, this@HomeFragment)))
 
                     }
                     binding.rvHome.adapter = concatAdapter
@@ -115,5 +112,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), MatchsHomeAdapters.OnMatc
     }
 
 
+    fun OnImagesClick(images: Images) {
+        findNavController()
+            .navigate(R.id.imagesCarouselFragment,
+                null,
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.homeFragment, true)
+                    .build()
+            )
+    }
 
 }

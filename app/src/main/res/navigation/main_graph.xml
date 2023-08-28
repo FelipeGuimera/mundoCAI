@@ -34,6 +34,9 @@
             app:destination="@id/historyDetailsFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToSaveState="true"/>
+        <action
+            android:id="@+id/action_homeFragment_to_imagesCarouselFragment"
+            app:destination="@id/imagesCarouselFragment" />
     </fragment>
     <fragment
         android:id="@+id/matchsFragment"
@@ -84,4 +87,8 @@
             android:name="tittle_history"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/imagesCarouselFragment"
+        android:name="com.example.mundocai.ui.details.ImagesCarouselFragment"
+        android:label="ImagesCarouselFragment" />
 </navigation>
