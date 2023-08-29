@@ -4,14 +4,14 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/black">
+    >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_carousel"
+    <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+        android:id="@+id/carousel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:orientation="horizontal">
 
-    </androidx.recyclerview.widget.RecyclerView>
+    </org.imaginativeworld.whynotimagecarousel.ImageCarousel>
 
 </RelativeLayout>

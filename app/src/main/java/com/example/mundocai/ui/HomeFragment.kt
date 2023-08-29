@@ -6,17 +6,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
-import com.example.mundocai.MainActivity
 import com.example.mundocai.R
 import com.example.mundocai.core.Resource
 import com.example.mundocai.data.model.*
-import com.example.mundocai.data.remote.HomeScreenDataSource
+import com.example.mundocai.data.remote.home.HomeScreenDataSource
 import com.example.mundocai.databinding.FragmentHomeBinding
-import com.example.mundocai.domain.HomeScreenRepoImpl
+import com.example.mundocai.domain.home.HomeScreenRepoImpl
 import com.example.mundocai.presentation.HomeScreenViewModel
 import com.example.mundocai.presentation.HomeScreenViewModelFactory
 import com.example.mundocai.ui.home.adapter.*
@@ -26,9 +24,11 @@ import com.example.mundocai.ui.home.adapter.concat.*
 class HomeFragment : Fragment(R.layout.fragment_home), MatchsHomeAdapters.OnMatchsClickListener{
 
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel by viewModels<HomeScreenViewModel> { HomeScreenViewModelFactory(HomeScreenRepoImpl(
+    private val viewModel by viewModels<HomeScreenViewModel> { HomeScreenViewModelFactory(
+        HomeScreenRepoImpl(
         HomeScreenDataSource()
-    ))  }
+    )
+    )  }
 
     private lateinit var concatAdapter: ConcatAdapter
 
@@ -56,7 +56,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), MatchsHomeAdapters.OnMatc
 
                     }
                     binding.rvHome.adapter = concatAdapter
-
                 }
 
                 is Resource.Failure -> {

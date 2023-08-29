@@ -1,7 +1,8 @@
-package com.example.mundocai.domain
+package com.example.mundocai.domain.home
 
 import com.example.mundocai.data.model.*
-import com.example.mundocai.data.remote.HomeScreenDataSource
+import com.example.mundocai.data.remote.home.HomeScreenDataSource
+import com.example.mundocai.domain.home.HomeScreenRepo
 
 class HomeScreenRepoImpl(private val dataSource: HomeScreenDataSource): HomeScreenRepo {
 

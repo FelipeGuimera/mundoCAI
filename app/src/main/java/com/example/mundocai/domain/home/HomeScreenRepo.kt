@@ -1,4 +1,4 @@
-package com.example.mundocai.domain
+package com.example.mundocai.domain.home
 
 
 import com.example.mundocai.data.model.*

@@ -1,11 +1,10 @@
-package com.example.mundocai.data.remote
+package com.example.mundocai.data.remote.home
 
 import com.example.mundocai.data.model.*
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.tasks.await
-import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
 class HomeScreenDataSource {
 
@@ -84,15 +83,5 @@ class HomeScreenDataSource {
     }
 
 
-    suspend fun getCarouselImages(): CarouselItem {
-        val imagesCarouselList = mutableListOf<CarouselItem>()
-        val querySnapshot = FirebaseFirestore.getInstance().collection("imageCarousel").get().await()
-        for (post in querySnapshot.documents){
-            post.toObject(CarouselItem::class.java)?.let {
-                imagesCarouselList.add(it)
-            }
-        }
-        return CarouselItem()
-    }
 
 }
