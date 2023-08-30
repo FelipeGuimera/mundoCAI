@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="16dp"
+    android:orientation="vertical">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="380dp"
         android:layout_height="120dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_gravity="center"
         android:foreground="@drawable/bordermatchs"
         app:cardBackgroundColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,29 +33,32 @@
 
         </ImageView>
 
-        <TextView
-            android:id="@+id/game_day"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/mada_medium"
-            android:textColor="#353434"
-            android:textStyle="bold"
-            tools:text="sab | 14/02/2023 | 15:30,"></TextView>
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/stadium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/mada_medium"
-            android:textColor="#090909"
-            android:textStyle="bold"
-            tools:text="Libertadores de America"></TextView>
+            <TextView
+                android:id="@+id/tournament"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mada_medium"
+                android:textColor="#090909"
+                tools:text="Copa de la Liga," />
+            <TextView
+                android:id="@+id/game_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mada_regular"
+                android:layout_marginStart="5dp"
+                android:textColor="#353434"
+                tools:text="sab | 14/02/2023 | 15:30 " />
+
+
+
+        </LinearLayout>
 
 
         <ImageView
@@ -65,7 +68,7 @@
             android:layout_gravity="end"
             android:layout_marginTop="35dp"
             android:layout_marginEnd="40dp"
-            android:src="@drawable/velez"></ImageView>
+            android:src="@drawable/velez" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="40dp"
@@ -84,7 +87,7 @@
                 android:textColor="#090909"
                 android:textSize="10dp"
                 android:textStyle="bold"
-                tools:text="L"></TextView>
+                tools:text="L" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -106,7 +109,7 @@
                 android:textColor="#090909"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                tools:text="3"></TextView>
+                tools:text="3" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -127,7 +130,7 @@
                 android:textColor="#090909"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                tools:text="1"></TextView>
+                tools:text="1" />
         </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>

@@ -37,7 +37,7 @@ class MatchsAdapter (private val matchsList: List<Matchs>): RecyclerView.Adapter
             Glide.with(context).load(item.local_team_image).centerCrop().into(binding.localTeamImg)
             Glide.with(context).load(item.away_team_image).centerCrop().into(binding.awayTeamImg)
             binding.gameDay.text = item.game_day
-            binding.stadium.text = item.stadium_name
+            binding.tournament.text = item.tournament
             binding.localScore.text = item.local_score
             binding.lOrV.text = item.l_or_v
             binding.awayScore.text = item.away_score

@@ -13,6 +13,7 @@ data class Matchs(
     val l_or_v: String = "",
     val local_score: String = "",
     val away_score: String = "",
+    val tournament: String = "",
     )
 
 data class MatchsList(val results: List<Matchs> = listOf())
