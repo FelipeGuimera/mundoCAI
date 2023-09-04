@@ -39,17 +39,18 @@ class ImagesCarouselFragment : Fragment(R.layout.fragment_images_carousel) {
                 for (document in querySnapshot) {
                     val carouselItem = document.toObject(CarouselItem::class.java)
                     imagesCarouselList.add(carouselItem)
+                    // Configurar el carrusel con los datos obtenidos
+
                 }
-
-                // Configurar el carrusel con los datos obtenidos
                 binding.carousel.addData(imagesCarouselList)
-
 
             }
             .addOnFailureListener { exception ->
                 Log.e("ImagesCarouselFragment", "Error loading carousel images", exception)
             }
     }
+
+
 }
 
 
