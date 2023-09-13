@@ -2,7 +2,7 @@ package com.example.mundocai.data.model
 
 
 data class ImagesCarousel(
-    val img: String = "",
+    val imageUrl: String = "",
 
 )
 

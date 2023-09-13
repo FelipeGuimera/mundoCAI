@@ -17,38 +17,31 @@ import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 class ImagesCarouselFragment : Fragment(R.layout.fragment_images_carousel) {
 
     private lateinit var binding: FragmentImagesCarouselBinding
+    private val list = mutableListOf<CarouselItem>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentImagesCarouselBinding.bind(view)
 
         val carousel: ImageCarousel = binding.carousel
-        carousel.registerLifecycle(viewLifecycleOwner)
+        list.add(CarouselItem("https://pbs.twimg.com/media/F2O5udrXYAI7QIW?format=jpg&name=large"))
+        list.add(CarouselItem("https://pbs.twimg.com/media/F2PIjViXwAE4m3e?format=jpg&name=4096x4096"))
+        list.add(CarouselItem("https://soydelrojo.com/wp-content/uploads/2023/07/Independiente-cerro-su-participacion-en-el-torneo.jpg"))
 
-        // Llamar a la función para cargar imágenes y configurar el carrusel
-        loadCarouselImages()
+        carousel.addData(list)
 
     }
 
-    private fun loadCarouselImages() {
-        val imagesCarouselList = mutableListOf<CarouselItem>()
-
-        FirebaseFirestore.getInstance().collection("imageCarousel")
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-                for (document in querySnapshot) {
-                    val carouselItem = document.toObject(CarouselItem::class.java)
-                    imagesCarouselList.add(carouselItem)
-                    // Configurar el carrusel con los datos obtenidos
-
-                }
-                binding.carousel.addData(imagesCarouselList)
-
+    private suspend fun loadCarouselImages(){
+        val querySnapshot = FirebaseFirestore.getInstance().collection("images").document().collection("imagesCarousel").get().await()
+        for (post in querySnapshot.documents){
+            post.toObject(CarouselItem::class.java)?.let { fbImagesCarousel->
+                list.add(fbImagesCarousel)
             }
-            .addOnFailureListener { exception ->
-                Log.e("ImagesCarouselFragment", "Error loading carousel images", exception)
-            }
+        }
     }
+
+
 
 
 }
