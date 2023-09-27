@@ -18,15 +18,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
-
-
         observeDestinationChange()
 
     }
@@ -36,11 +32,10 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.loginFragment -> {
                     binding.bottomNavigationView.hide()
-                    getSupportActionBar()?.hide()
-
-
                 }
-
+                R.id.registerFragment-> {
+                    binding.bottomNavigationView.hide()
+                }
                 else -> {
                     binding.bottomNavigationView.show()
                     supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
