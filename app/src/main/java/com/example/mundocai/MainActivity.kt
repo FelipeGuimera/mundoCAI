@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.registerFragment-> {
                     binding.bottomNavigationView.hide()
                 }
+                R.id.splashFragment->{
+                    binding.bottomNavigationView.hide()
+
+                }
                 else -> {
                     binding.bottomNavigationView.show()
                     supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
