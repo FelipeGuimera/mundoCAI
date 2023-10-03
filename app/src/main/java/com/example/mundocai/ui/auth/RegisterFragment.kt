@@ -65,6 +65,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 }
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
+                    findNavController().navigate(R.id.action_registerFragment_to_avatarProfileFragment)
                 }
                 is Resource.Failure -> {
                     binding.btnSignup.isEnabled = true

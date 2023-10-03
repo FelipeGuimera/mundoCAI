@@ -133,8 +133,8 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
-            android:id="@+id/action_registerFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
+            android:id="@+id/action_registerFragment_to_avatarProfileFragment"
+            app:destination="@id/avatarProfileFragment"
             app:enterAnim="@anim/slide_in_right" />
     </fragment>
     <fragment
@@ -145,6 +145,11 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_in_right" />
+            app:enterAnim="@anim/slide_down" />
     </fragment>
+    <fragment
+        android:id="@+id/avatarProfileFragment"
+        android:name="com.example.mundocai.ui.auth.AvatarProfileFragment"
+        android:label="fragment_avatar_profile"
+        tools:layout="@layout/fragment_avatar_profile" />
 </navigation>
