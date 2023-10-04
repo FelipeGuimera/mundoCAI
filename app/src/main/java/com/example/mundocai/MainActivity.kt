@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(navController)
         observeDestinationChange()
 
+        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setCustomView(R.layout.toolbar)
+
     }
 
     private fun observeDestinationChange() {
@@ -32,21 +35,24 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.loginFragment -> {
                     binding.bottomNavigationView.hide()
+                    supportActionBar?.hide()
                 }
                 R.id.registerFragment-> {
                     binding.bottomNavigationView.hide()
+                    supportActionBar?.hide()
                 }
                 R.id.splashFragment-> {
                     binding.bottomNavigationView.hide()
+                    supportActionBar?.hide()
                 }
                 R.id.avatarProfileFragment->{
                     binding.bottomNavigationView.hide()
+                    supportActionBar?.hide()
                 }
 
                 else -> {
                     binding.bottomNavigationView.show()
-                    supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-                    supportActionBar?.setCustomView(R.layout.toolbar)
+
                 }
             }
         }

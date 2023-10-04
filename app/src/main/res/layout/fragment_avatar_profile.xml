@@ -33,7 +33,9 @@
         app:layout_constraintEnd_toStartOf="@+id/img_profile2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/bochiniilustracion"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile2"
@@ -44,7 +46,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/bochiniilustracion"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
 
     <!-- Avatares en la parte inferior -->
     <de.hdodenhof.circleimageview.CircleImageView
@@ -57,7 +61,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_profile2"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/bochiniilustracion"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile4"
@@ -67,7 +73,9 @@
         app:layout_constraintEnd_toStartOf="@+id/img_profile5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_profile1"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/bochiniilustracion"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile5"
@@ -77,7 +85,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_profile2"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/bochiniilustracion"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile6"
@@ -87,22 +97,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_profile5"
         app:layout_constraintTop_toBottomOf="@+id/img_profile3"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/bochiniilustracion"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/opensans_extra_bold"
-        android:text="OMITIR"
+        android:text="SELECCIONAR"
+        android:layout_marginTop="8dp"
         android:textAlignment="center"
         android:textColor="#EC1C24"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_profile5" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/opensans_extra_bold"
+        android:text="OMITIR"
+        android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_profile5" />
+        app:layout_constraintTop_toBottomOf="@+id/img_profile5"
+        app:layout_constraintVertical_bias="0.628" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
