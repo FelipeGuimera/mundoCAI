@@ -1,5 +1,6 @@
 package com.example.mundocai.presentation.auth
 
+import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
@@ -25,6 +26,15 @@ class AuthViewModel(private val repo: AuthRepo) : ViewModel() {
         try {
             emit(Resource.Success(repo.signUp(email, password, username)))
         }catch (e: Exception){
+            emit(Resource.Failure(e))
+        }
+    }
+
+    fun updateUserProfile(imageBitmap: Bitmap) = liveData(Dispatchers.IO) {
+        emit(Resource.Loading())
+        try {
+            emit(Resource.Success(repo.updateProfile(imageBitmap)))
+        } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
     }

@@ -151,5 +151,9 @@
         android:id="@+id/avatarProfileFragment"
         android:name="com.example.mundocai.ui.auth.AvatarProfileFragment"
         android:label="fragment_avatar_profile"
-        tools:layout="@layout/fragment_avatar_profile" />
+        tools:layout="@layout/fragment_avatar_profile" >
+        <action
+            android:id="@+id/action_avatarProfileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
