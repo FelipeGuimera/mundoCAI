@@ -15,10 +15,17 @@ import com.example.mundocai.databinding.FragmentLoginBinding
 import com.example.mundocai.domain.auth.AuthRepoImpl
 import com.example.mundocai.presentation.auth.AuthViewModel
 import com.example.mundocai.presentation.auth.AuthViewModelFactory
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
@@ -27,16 +34,17 @@ const val REQUEST_CODE_SIGN_IN = 0
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
-
     private lateinit var binding: FragmentLoginBinding
 
     private val firebaseAuth by lazy { FirebaseAuth.getInstance() }
-    private val viewModel by viewModels<AuthViewModel> { AuthViewModelFactory(
-        AuthRepoImpl(
-        AuthDataSource()
-    )
-    ) }
-
+    private val viewModel by viewModels<AuthViewModel> {
+        AuthViewModelFactory(
+            AuthRepoImpl(
+                AuthDataSource()
+            )
+        )
+    }
+    private val callbackManager = CallbackManager.Factory.create()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,6 +54,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         doLogin()
         goToSignUpPage()
         configureGoogleSignIn()
+        configureFacebookSignIn()
     }
 
 
@@ -60,7 +69,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             val email = binding.editTextEmail.text.toString().trim()
             val password = binding.editTextPassword.text.toString().trim()
             validateCredentials(email, password)
-            signIn(email,password)
+            signIn(email, password)
         }
     }
 
@@ -82,8 +91,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
-    private fun signIn(email: String, password: String){
-        viewModel.signIn(email,password).observe(viewLifecycleOwner, Observer { result ->
+    private fun signIn(email: String, password: String) {
+        viewModel.signIn(email, password).observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Resource.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
@@ -131,6 +140,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+
         if (requestCode == REQUEST_CODE_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
@@ -158,6 +169,49 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
     }
 
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        firebaseAuth.signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    // El inicio de sesión con Facebook se completó con éxito
+                    val user = firebaseAuth.currentUser
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                } else {
+                    // El inicio de sesión con Facebook falló, manejar el error
+                }
+            }
+    }
 
+    private fun signInWithFacebook() {
 
+        LoginManager.getInstance().logInWithReadPermissions(this, listOf("email"))
+        LoginManager.getInstance()
+            .registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+
+                override fun onSuccess(result: LoginResult?) {
+                    result?.let {
+                        val token = it.accessToken
+                        handleFacebookAccessToken(token)
+                    }
+                }
+
+                override fun onCancel() {
+
+                }
+
+                override fun onError(error: FacebookException?) {
+
+                }
+
+            })
+
+    }
+
+    private fun configureFacebookSignIn() {
+        binding.fbSign.setOnClickListener {
+            signInWithFacebook()
+        }
+    }
 }
+
