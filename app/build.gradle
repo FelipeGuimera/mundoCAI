@@ -80,7 +80,8 @@ dependencies {
     implementation 'com.airbnb.android:lottie:6.1.0'
 
     //facebook
-    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    implementation 'com.facebook.android:facebook-login:4.42.0'
+
 
     //libreria imagecarousel
     implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0'

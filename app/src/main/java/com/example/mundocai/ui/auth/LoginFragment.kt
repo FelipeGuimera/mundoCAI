@@ -1,7 +1,9 @@
 package com.example.mundocai.ui.auth
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -15,10 +17,7 @@ import com.example.mundocai.databinding.FragmentLoginBinding
 import com.example.mundocai.domain.auth.AuthRepoImpl
 import com.example.mundocai.presentation.auth.AuthViewModel
 import com.example.mundocai.presentation.auth.AuthViewModelFactory
-import com.facebook.AccessToken
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
+import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -140,6 +139,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        FacebookSdk.sdkInitialize(requireContext())
         callbackManager.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == REQUEST_CODE_SIGN_IN) {
@@ -178,13 +178,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     val user = firebaseAuth.currentUser
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 } else {
-                    // El inicio de sesión con Facebook falló, manejar el error
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    Toast.makeText(
+                        context,
+                        "Authentication failed.",
+                        Toast.LENGTH_SHORT,
+                    ).show()
                 }
             }
     }
 
     private fun signInWithFacebook() {
-
         LoginManager.getInstance().logInWithReadPermissions(this, listOf("email"))
         LoginManager.getInstance()
             .registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
@@ -197,11 +201,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
 
                 override fun onCancel() {
+                    Log.d("FacebookLogin", "Inicio de sesión de Facebook cancelado")
 
                 }
 
                 override fun onError(error: FacebookException?) {
-
+                    Log.e("FacebookLogin", "Error durante el inicio de sesión de Facebook: ${error?.message}")
                 }
 
             })
