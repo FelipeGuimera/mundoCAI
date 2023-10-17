@@ -16,7 +16,6 @@ import com.example.mundocai.data.remote.auth.AuthDataSource
 import com.example.mundocai.databinding.FragmentLoginBinding
 import com.example.mundocai.domain.auth.AuthRepoImpl
 import com.example.mundocai.presentation.auth.AuthViewModel
-import com.example.mundocai.presentation.auth.AuthViewModelFactory
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -37,7 +36,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val firebaseAuth by lazy { FirebaseAuth.getInstance() }
     private val viewModel by viewModels<AuthViewModel> {
-        AuthViewModelFactory(
+        AuthViewModel.AuthViewModelFactory(
             AuthRepoImpl(
                 AuthDataSource()
             )
@@ -54,6 +53,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         goToSignUpPage()
         configureGoogleSignIn()
         configureFacebookSignIn()
+        configureAnonymousSign()
     }
 
 
@@ -218,5 +218,43 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             signInWithFacebook()
         }
     }
+
+    private fun signInAnonymous() {
+        viewModel.signAnonymous().observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+                is Resource.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                    binding.btnSignin.isEnabled = false
+                }
+                is Resource.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(
+                        requireContext(),
+                        "Welcome",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                }
+                is Resource.Failure -> {
+                    binding.btnSignin.isEnabled = true
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(
+                        requireContext(),
+                        "Error: ${result.exception}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        })
+    }
+
+    private fun configureAnonymousSign(){
+        binding.txtInviteUser.setOnClickListener {
+            signInAnonymous()
+        }
+    }
+
 }
+
+
 

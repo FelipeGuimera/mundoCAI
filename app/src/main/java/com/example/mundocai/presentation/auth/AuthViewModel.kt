@@ -21,28 +21,28 @@ class AuthViewModel(private val repo: AuthRepo) : ViewModel() {
         }
     }
 
-    fun signUp(email:String, password:String, username:String) = liveData(Dispatchers.IO){
+    fun signUp(email: String, password: String, username: String) = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
             emit(Resource.Success(repo.signUp(email, password, username)))
-        }catch (e: Exception){
-            emit(Resource.Failure(e))
-        }
-    }
-
-    fun updateUserProfile(imageBitmap: Bitmap) = liveData(Dispatchers.IO) {
-        emit(Resource.Loading())
-        try {
-            emit(Resource.Success(repo.updateProfile(imageBitmap)))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
     }
-}
 
-
-class AuthViewModelFactory(private val repo: AuthRepo) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return modelClass.getConstructor(AuthRepo::class.java).newInstance(repo)
+    fun signAnonymous() = liveData(Dispatchers.IO) {
+        emit(Resource.Loading())
+        try {
+            emit(Resource.Success(repo.signAnonymous()))
+        } catch (e: Exception) {
+            emit(Resource.Failure(e))
+        }
     }
+
+    class AuthViewModelFactory(private val repo: AuthRepo) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return modelClass.getConstructor(AuthRepo::class.java).newInstance(repo)
+        }
+    }
+
 }

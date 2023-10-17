@@ -2,6 +2,7 @@ package com.example.mundocai.data.remote.auth
 
 import android.graphics.Bitmap
 import android.net.Uri
+import android.util.Log
 import com.example.mundocai.data.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -27,6 +28,16 @@ class AuthDataSource {
         }
 
         return authResult.user
+    }
+
+    suspend fun signAnonymous(): FirebaseUser? {
+        return try {
+            val authResult = FirebaseAuth.getInstance().signInAnonymously().await()
+            authResult.user
+        } catch (e: Exception) {
+            Log.e("Auth", "Error en la autenticación anónima: ${e.message}")
+            null // Devolver null en caso de error
+        }
     }
 
     suspend fun updateUserProfile(imageBitmap: Bitmap) {

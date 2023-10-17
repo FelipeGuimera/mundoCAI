@@ -11,6 +11,8 @@ class AuthRepoImpl(private val dataSource: AuthDataSource) : AuthRepo {
     override suspend fun signUp(email: String, password: String, username: String): FirebaseUser? =
         dataSource.singUp(email, password, username)
 
+    override suspend fun signAnonymous(): FirebaseUser? = dataSource.signAnonymous()
+
     override suspend fun updateProfile(imageBitmap: Bitmap) = dataSource.updateUserProfile(imageBitmap)
 
 }

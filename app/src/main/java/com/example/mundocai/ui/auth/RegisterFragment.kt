@@ -1,11 +1,9 @@
 package com.example.mundocai.ui.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -15,14 +13,13 @@ import com.example.mundocai.data.remote.auth.AuthDataSource
 import com.example.mundocai.databinding.FragmentRegisterBinding
 import com.example.mundocai.domain.auth.AuthRepoImpl
 import com.example.mundocai.presentation.auth.AuthViewModel
-import com.example.mundocai.presentation.auth.AuthViewModelFactory
 
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private lateinit var binding: FragmentRegisterBinding
     private val viewModel by viewModels<AuthViewModel> {
-        AuthViewModelFactory(
+        AuthViewModel.AuthViewModelFactory(
             AuthRepoImpl(
                 AuthDataSource()
             )
