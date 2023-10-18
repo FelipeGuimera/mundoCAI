@@ -54,6 +54,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         configureGoogleSignIn()
         configureFacebookSignIn()
         configureAnonymousSign()
+        configureForgotPassword()
     }
 
 
@@ -251,6 +252,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun configureAnonymousSign(){
         binding.txtInviteUser.setOnClickListener {
             signInAnonymous()
+        }
+    }
+
+
+
+    private fun configureForgotPassword(){
+        binding.txtPasswordForgot.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         }
     }
 

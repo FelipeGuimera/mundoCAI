@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
         observeDestinationChange()
@@ -37,17 +38,22 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNavigationView.hide()
                     supportActionBar?.hide()
                 }
-                R.id.registerFragment-> {
+                R.id.registerFragment -> {
                     binding.bottomNavigationView.hide()
                     supportActionBar?.hide()
                 }
-                R.id.splashFragment-> {
+                R.id.splashFragment -> {
                     binding.bottomNavigationView.hide()
                     supportActionBar?.hide()
                 }
-                R.id.avatarProfileFragment->{
+                R.id.avatarProfileFragment -> {
                     binding.bottomNavigationView.hide()
                     supportActionBar?.hide()
+                }
+                R.id.forgotPasswordFragment -> {
+                    binding.bottomNavigationView.hide()
+                    supportActionBar?.hide()
+
                 }
 
                 else -> {
