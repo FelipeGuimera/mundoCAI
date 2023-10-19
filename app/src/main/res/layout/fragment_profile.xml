@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.profile.ProfileFragment"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile fragment" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            tools:text="FelipeCAI"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar_profile"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            tools:src="@drawable/ricardobochini"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
+    </LinearLayout>
+</LinearLayout>

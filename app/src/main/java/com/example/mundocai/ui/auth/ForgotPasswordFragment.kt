@@ -20,19 +20,16 @@ import com.google.firebase.auth.FirebaseAuth
 class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
 
     private lateinit var binding: FragmentForgotPasswordBinding
-    private val viewModel by viewModels<AuthViewModel> {
-        AuthViewModel.AuthViewModelFactory(
-            AuthRepoImpl(
-                AuthDataSource()
-            )
-        )
-    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentForgotPasswordBinding.bind(view)
 
+        binding.backText.setOnClickListener {
+            // Aquí navega al home fragment usando NavController
+            findNavController().navigate(R.id.action_forgotPasswordFragment_to_loginFragment)
+        }
 
         configureResetPassword()
     }

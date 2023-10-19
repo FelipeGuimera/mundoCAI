@@ -1,12 +1,9 @@
 package com.example.mundocai.presentation.auth
 
-import android.graphics.Bitmap
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.example.mundocai.core.Resource
 import com.example.mundocai.domain.auth.AuthRepo
-import io.grpc.NameResolver.ResolutionResult
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.Dispatchers
 
 class AuthViewModel(private val repo: AuthRepo) : ViewModel() {
@@ -34,6 +31,15 @@ class AuthViewModel(private val repo: AuthRepo) : ViewModel() {
         emit(Resource.Loading())
         try {
             emit(Resource.Success(repo.signAnonymous()))
+        } catch (e: Exception) {
+            emit(Resource.Failure(e))
+        }
+    }
+
+    fun saveUsername(username: String) = liveData(Dispatchers.IO) {
+        emit(Resource.Loading())
+        try {
+            emit(Resource.Success(repo.saveUsername(username)))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }

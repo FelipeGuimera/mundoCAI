@@ -139,6 +139,9 @@
             android:id="@+id/action_registerFragment_to_avatarProfileFragment"
             app:destination="@id/avatarProfileFragment"
             app:enterAnim="@anim/slide_in_right" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"

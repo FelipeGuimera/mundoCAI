@@ -29,6 +29,12 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRegisterBinding.bind(view)
+
+        binding.backTextRegister.setOnClickListener {
+            // Aquí navega al home fragment usando NavController
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
+
         singUp()
     }
 
