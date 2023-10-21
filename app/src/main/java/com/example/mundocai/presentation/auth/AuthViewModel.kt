@@ -1,5 +1,6 @@
 package com.example.mundocai.presentation.auth
 
+import android.graphics.Bitmap
 import androidx.lifecycle.*
 import com.example.mundocai.core.Resource
 import com.example.mundocai.domain.auth.AuthRepo
@@ -40,6 +41,15 @@ class AuthViewModel(private val repo: AuthRepo) : ViewModel() {
         emit(Resource.Loading())
         try {
             emit(Resource.Success(repo.saveUsername(username)))
+        } catch (e: Exception) {
+            emit(Resource.Failure(e))
+        }
+    }
+
+    fun saveAvatar(imageBitmap: Bitmap?) = liveData(Dispatchers.IO) {
+        emit(Resource.Loading())
+        try {
+            emit(Resource.Success(repo.saveAvatar(imageBitmap)))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }

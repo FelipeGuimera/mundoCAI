@@ -1,5 +1,6 @@
 package com.example.mundocai.data.remote.auth
 
+import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
 import com.example.mundocai.data.model.User
@@ -49,8 +50,36 @@ class AuthDataSource {
             .setDisplayName(username)
             .build()
         user?.updateProfile(profileUpdates)?.await()
-
     }
+
+    suspend fun saveAvatar(imageBitmap: Bitmap?) {
+        val user = FirebaseAuth.getInstance().currentUser
+
+        if (user != null && imageBitmap != null) {
+            val imageRef =
+                FirebaseStorage.getInstance().reference.child("${user.uid}/profile_picture")
+
+            val baos = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val data = baos.toByteArray()
+
+            val uploadTask = imageRef.putBytes(data)
+
+            // Espera a que la carga se complete
+            val uploadTaskSnapshot = uploadTask.await()
+
+            // Obtiene la URL de descarga de la imagen
+            val downloadUrl = uploadTaskSnapshot.storage.downloadUrl.await().toString()
+
+            // Actualiza la foto de perfil en el perfil del usuario
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setPhotoUri(Uri.parse(downloadUrl))
+                .build()
+
+            user.updateProfile(profileUpdates).await()
+        }
+    }
+
 
 
 }

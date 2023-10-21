@@ -31,7 +31,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProfileBinding.bind(view)
@@ -44,13 +43,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val username =
                 FirebaseAuth.getInstance().currentUser?.displayName // Obtener el nombre del usuario
             binding.username.text = username ?: "Nombre de usuario no disponible"
+            Glide.with(this).load(currentUser?.photoUrl).centerCrop().into(binding.avatarProfile)
+
         } else {
             // Manejar el caso en el que el usuario no haya iniciado sesión
             binding.username.text = "Usuario no identificado"
         }
+
+
+
+
     }
+
+
 }
-
-
 
 

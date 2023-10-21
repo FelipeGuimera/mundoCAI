@@ -1,0 +1,8 @@
+<!-- border_black_circle.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <!-- Color del borde (negro) -->
+    <stroke
+        android:width="4dp"
+        android:color="#EC1C24"/>
+</shape>
