@@ -31,15 +31,6 @@ class AvatarProfileFragment : Fragment(R.layout.fragment_avatar_profile) {
 
     private var selectedAvatar: Bitmap? = null
 
-    private var selectedAvatarTint: Int? = null
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_avatar_profile, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,33 +39,38 @@ class AvatarProfileFragment : Fragment(R.layout.fragment_avatar_profile) {
 
         binding.imgProfile1.setOnClickListener {
             selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
+            binding.imgProfile1.setImageBitmap(selectedAvatar)
 
         }
 
 
         binding.imgProfile2.setOnClickListener {
             selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
+            binding.imgProfile2.setImageBitmap(selectedAvatar)
 
         }
 
         binding.imgProfile3.setOnClickListener {
             selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
+            binding.imgProfile3.setImageBitmap(selectedAvatar)
 
         }
 
         binding.imgProfile4.setOnClickListener {
             selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
+            binding.imgProfile4.setImageBitmap(selectedAvatar)
 
         }
 
         binding.imgProfile5.setOnClickListener {
             selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
+            binding.imgProfile5.setImageBitmap(selectedAvatar)
 
         }
 
         binding.imgProfile6.setOnClickListener {
             selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
-
+            binding.imgProfile6.setImageBitmap(selectedAvatar)
         }
 
 
