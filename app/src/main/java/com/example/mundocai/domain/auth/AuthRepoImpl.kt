@@ -1,6 +1,5 @@
 package com.example.mundocai.domain.auth
 
-import android.graphics.Bitmap
 import com.example.mundocai.data.remote.auth.AuthDataSource
 import com.google.firebase.auth.FirebaseUser
 import de.hdodenhof.circleimageview.CircleImageView
@@ -16,5 +15,5 @@ class AuthRepoImpl(private val dataSource: AuthDataSource) : AuthRepo {
 
     override suspend fun saveUsername(username: String) = dataSource.saveUsername(username)
 
-    override suspend fun saveAvatar(imageBitmap: Bitmap?) = dataSource.saveAvatar(imageBitmap)
+
 }

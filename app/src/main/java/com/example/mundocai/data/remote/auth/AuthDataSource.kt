@@ -12,6 +12,7 @@ import com.google.firebase.storage.FirebaseStorage
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.tasks.await
 import java.io.ByteArrayOutputStream
+import java.util.*
 
 class AuthDataSource {
 
@@ -52,32 +53,8 @@ class AuthDataSource {
         user?.updateProfile(profileUpdates)?.await()
     }
 
-    suspend fun saveAvatar(imageBitmap: Bitmap?) {
-        val user = FirebaseAuth.getInstance().currentUser
-
-        if (user != null && imageBitmap != null) {
-            val imageRef =
-                FirebaseStorage.getInstance().reference.child("${user.email}/profile_picture")
-
-            val baos = ByteArrayOutputStream()
-            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-            val data = baos.toByteArray()
-
-            // Sube la imagen a Firebase Storage
-            imageRef.putBytes(data).await()
-
-            // Obtiene la URL de descarga de la imagen cargada
-            val downloadUrl = imageRef.downloadUrl.await().toString()
-
-            // Actualiza la foto de perfil en el perfil del usuario
-            val profileUpdates = UserProfileChangeRequest.Builder()
-                .setPhotoUri(Uri.parse(downloadUrl))
-                .build()
-
-            user.updateProfile(profileUpdates)
-        }
-
-    }
-
 
 }
+
+
+

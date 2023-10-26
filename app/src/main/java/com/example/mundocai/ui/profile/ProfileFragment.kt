@@ -43,18 +43,25 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val username =
                 FirebaseAuth.getInstance().currentUser?.displayName // Obtener el nombre del usuario
             binding.username.text = username ?: "Nombre de usuario no disponible"
-            Glide.with(this).load(currentUser?.photoUrl).centerCrop().into(binding.avatarProfile)
-
         } else {
             // Manejar el caso en el que el usuario no haya iniciado sesión
             binding.username.text = "Usuario no identificado"
         }
 
+        val imageProfile = FirebaseAuth.getInstance().currentUser?.photoUrl
+        if (imageProfile != null) {
+            Glide.with(this).load(imageProfile).centerCrop().into(binding.avatarProfile)
+        } else {
+            // Mostrar una imagen de placeholder o un texto en lugar de la foto
+            // Por ejemplo, puedes usar un recurso de imagen en tu proyecto o un recurso de texto.
+            Glide.with(this).load(R.drawable.ricardobochini).centerCrop()
+                .into(binding.avatarProfile)
 
+
+        }
 
 
     }
-
 
 }
 

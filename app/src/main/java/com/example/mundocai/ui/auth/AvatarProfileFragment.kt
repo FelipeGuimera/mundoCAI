@@ -1,12 +1,9 @@
 package com.example.mundocai.ui.auth
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,7 +12,12 @@ import com.example.mundocai.data.remote.auth.AuthDataSource
 import com.example.mundocai.databinding.FragmentAvatarProfileBinding
 import com.example.mundocai.domain.auth.AuthRepoImpl
 import com.example.mundocai.presentation.auth.AuthViewModel
-import de.hdodenhof.circleimageview.CircleImageView
+import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import kotlinx.coroutines.tasks.await
 
 
 class AvatarProfileFragment : Fragment(R.layout.fragment_avatar_profile) {
@@ -29,71 +31,73 @@ class AvatarProfileFragment : Fragment(R.layout.fragment_avatar_profile) {
         )
     }
 
-    private var selectedAvatar: Bitmap? = null
-
+    private var storageReference: StorageReference? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAvatarProfileBinding.bind(view)
 
+        val fragmentContext = requireContext() // Captura el contexto del fragmento
 
-        binding.imgProfile1.setOnClickListener {
-            selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
-            binding.imgProfile1.setImageBitmap(selectedAvatar)
-
+        // Define a function to set the storage reference
+        fun setStorageReference(imageId: Int) {
+            storageReference =
+                FirebaseStorage.getInstance().getReference("avatar/$imageId.png")
         }
 
+        binding.imgProfile1.setOnClickListener {
+            setStorageReference(1)
+        }
 
         binding.imgProfile2.setOnClickListener {
-            selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
-            binding.imgProfile2.setImageBitmap(selectedAvatar)
-
+            setStorageReference(2)
         }
 
         binding.imgProfile3.setOnClickListener {
-            selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
-            binding.imgProfile3.setImageBitmap(selectedAvatar)
-
+            setStorageReference(3)
         }
 
         binding.imgProfile4.setOnClickListener {
-            selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
-            binding.imgProfile4.setImageBitmap(selectedAvatar)
-
+            setStorageReference(4)
         }
 
         binding.imgProfile5.setOnClickListener {
-            selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
-            binding.imgProfile5.setImageBitmap(selectedAvatar)
-
+            setStorageReference(5)
         }
 
         binding.imgProfile6.setOnClickListener {
-            selectedAvatar = BitmapFactory.decodeResource(resources, R.drawable.ricardobochini)
-            binding.imgProfile6.setImageBitmap(selectedAvatar)
-        }
+            setStorageReference(6)
 
+        }
 
         binding.selectImage.setOnClickListener {
-            if (selectedAvatar != null) {
-                viewModel.saveAvatar(selectedAvatar)
-                // Navega a la siguiente pantalla o realiza alguna otra acción
-                findNavController().navigate(R.id.action_avatarProfileFragment_to_homeFragment)
-            }
+            val user = Firebase.auth.currentUser
+            storageReference?.downloadUrl
+                ?.addOnSuccessListener { uri ->
+                    // Actualiza el perfil del usuario con la URL de la imagen
+                    val profileUpdates = UserProfileChangeRequest.Builder()
+                        .setPhotoUri(uri)
+                        .build()
+                    user?.updateProfile(profileUpdates)
+                        ?.addOnCompleteListener { updateProfileTask ->
+                            if (updateProfileTask.isSuccessful) {
+                                // Navega a la siguiente pantalla o realiza alguna otra acción
+                                findNavController().navigate(R.id.action_avatarProfileFragment_to_homeFragment)
 
+                            }
+                        }
+                }
         }
+
 
         binding.skip.setOnClickListener {
             // Navega a la siguiente pantalla o realiza alguna otra acción
             findNavController().navigate(R.id.action_avatarProfileFragment_to_homeFragment)
         }
-
-
-
     }
-
-
 }
+
+
 
 
 
