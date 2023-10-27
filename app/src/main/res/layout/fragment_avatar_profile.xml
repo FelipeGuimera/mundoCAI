@@ -35,7 +35,9 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ricardobochini"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        app:civ_border_color="#FF000000"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile2"
@@ -48,7 +50,9 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/danielbertoni"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        app:civ_border_color="#FF000000"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <!-- Avatares en la parte inferior -->
     <de.hdodenhof.circleimageview.CircleImageView
@@ -63,7 +67,9 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/arsenioerico"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        app:civ_border_color="#FF000000"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile4"
@@ -75,7 +81,9 @@
         app:layout_constraintTop_toBottomOf="@+id/img_profile1"
         android:src="@drawable/ricardopavoni"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        app:civ_border_color="#FF000000"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile5"
@@ -87,7 +95,9 @@
         app:layout_constraintTop_toBottomOf="@+id/img_profile2"
         android:src="@drawable/miguelangelsantoro"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        app:civ_border_color="#FF000000"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile6"
@@ -99,7 +109,9 @@
         app:layout_constraintTop_toBottomOf="@+id/img_profile3"
         android:src="@drawable/josepastoriza"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        app:civ_border_color="#FF000000"
+        android:clickable="true"
+        android:focusable="true"/>
 
 
     <TextView
@@ -116,7 +128,8 @@
         app:layout_constraintBottom_toTopOf="@+id/skip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_profile5" />
+        app:layout_constraintTop_toBottomOf="@+id/img_profile5"
+        />
 
     <TextView
         android:id="@+id/skip"

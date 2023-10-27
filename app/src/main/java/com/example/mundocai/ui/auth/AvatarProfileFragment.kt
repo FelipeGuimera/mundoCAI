@@ -1,72 +1,75 @@
 package com.example.mundocai.ui.auth
 
-import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mundocai.R
-import com.example.mundocai.data.remote.auth.AuthDataSource
 import com.example.mundocai.databinding.FragmentAvatarProfileBinding
-import com.example.mundocai.domain.auth.AuthRepoImpl
-import com.example.mundocai.presentation.auth.AuthViewModel
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlinx.coroutines.tasks.await
+import de.hdodenhof.circleimageview.CircleImageView
 
 
 class AvatarProfileFragment : Fragment(R.layout.fragment_avatar_profile) {
 
     private lateinit var binding: FragmentAvatarProfileBinding
-    private val viewModel by viewModels<AuthViewModel> {
-        AuthViewModel.AuthViewModelFactory(
-            AuthRepoImpl(
-                AuthDataSource()
-            )
-        )
-    }
 
     private var storageReference: StorageReference? = null
+    private var selectedAvatar: CircleImageView? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAvatarProfileBinding.bind(view)
 
-        val fragmentContext = requireContext() // Captura el contexto del fragmento
 
-        // Define a function to set the storage reference
         fun setStorageReference(imageId: Int) {
             storageReference =
                 FirebaseStorage.getInstance().getReference("avatar/$imageId.png")
         }
 
+        fun selectAvatar(imageView: CircleImageView) {
+            // Primero, restaura el borde del avatar anterior (si hay uno)
+            selectedAvatar?.borderColor = 0xFF000000.toInt()
+
+            // Establece el nuevo avatar seleccionado y cambia su borde
+            selectedAvatar = imageView
+            selectedAvatar?.borderColor = 0xFFEC1C24.toInt()
+        }
+
+
         binding.imgProfile1.setOnClickListener {
             setStorageReference(1)
+            selectAvatar(binding.imgProfile1)
         }
 
         binding.imgProfile2.setOnClickListener {
             setStorageReference(2)
+            selectAvatar(binding.imgProfile2)
         }
 
         binding.imgProfile3.setOnClickListener {
             setStorageReference(3)
+            selectAvatar(binding.imgProfile3)
         }
 
         binding.imgProfile4.setOnClickListener {
             setStorageReference(4)
+            selectAvatar(binding.imgProfile4)
         }
 
         binding.imgProfile5.setOnClickListener {
             setStorageReference(5)
+            selectAvatar(binding.imgProfile5)
         }
 
         binding.imgProfile6.setOnClickListener {
             setStorageReference(6)
+            selectAvatar(binding.imgProfile6)
 
         }
 
