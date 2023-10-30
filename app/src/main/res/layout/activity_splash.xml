@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.splash.SplashFragment"
-    >
-
+    tools:context=".ui.splash.SplashActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        android:background="#EC1C24"
+        android:background="#D6151D"
         app:lottie_rawRes="@raw/bocharacing">
-
     </com.airbnb.lottie.LottieAnimationView>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

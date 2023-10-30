@@ -36,11 +36,6 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.id) {
 
-                R.id.splashFragment -> {
-                    binding.bottomNavigationView.hide()
-                    binding.include.toolbar.hide()
-
-                }
                 R.id.loginFragment -> {
                     binding.bottomNavigationView.hide()
                     binding.include.toolbar.hide()
