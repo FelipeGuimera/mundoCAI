@@ -40,15 +40,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         // Verifica si el usuario ha iniciado sesión
         if (currentUser != null) {
-            val username =
-                FirebaseAuth.getInstance().currentUser?.displayName // Obtener el nombre del usuario
+            val username = FirebaseAuth.getInstance().currentUser?.displayName // Obtener el nombre del usuario
+            val email = FirebaseAuth.getInstance().currentUser?.email
+
             binding.username.text = username ?: "Nombre de usuario no disponible"
+            binding.email.text = email ?: "Email no disponible"
+
         } else {
             // Manejar el caso en el que el usuario no haya iniciado sesión
             binding.username.text = "Usuario no identificado"
         }
 
         val imageProfile = FirebaseAuth.getInstance().currentUser?.photoUrl
+
         if (imageProfile != null) {
             Glide.with(this).load(imageProfile).centerCrop().into(binding.avatarProfile)
         } else {
@@ -63,6 +67,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     }
 
+
 }
+
 
 
