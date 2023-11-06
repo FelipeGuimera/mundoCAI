@@ -9,7 +9,18 @@
     android:gravity="center"
     tools:context=".ui.auth.RegisterFragment">
 
+    <ImageView
+        android:id="@+id/escudo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/escudoindependiente"
+        app:layout_constraintBottom_toTopOf="@+id/text_input_layout_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="70dp"
         android:id="@+id/text_input_layout_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
