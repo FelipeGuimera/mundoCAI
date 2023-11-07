@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomTabTextStyle">
+        <!-- Cambia el tipo de fuente y otros atributos de texto según tus necesidades -->
+        <item name="android:fontFamily">@font/jost_bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <!-- Puedes agregar más atributos de texto aquí -->
+    </style>
+</resources>
