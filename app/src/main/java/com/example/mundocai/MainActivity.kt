@@ -1,8 +1,13 @@
 package com.example.mundocai
 
+import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
@@ -15,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,19 +64,64 @@ class MainActivity : AppCompatActivity() {
                     binding.include.toolbar.hide()
                 }
 
-                R.id.quizFragment -> {
+                R.id.questionsFragment -> {
+                    binding.bottomNavigationView.hide()
+                    binding.include.profileToolbar.hide()
+                    binding.include.burgermenu.hide()
+                    binding.include.shieldToolbar.hide()
+                    binding.include.closeCross.show()
+
+                    binding.include.closeCross.setOnClickListener {
+                        navController.navigate(R.id.action_questionsFragment_to_quizFragment)
+                    }
 
                 }
 
+                R.id.rankingFragment -> {
+                    binding.bottomNavigationView.hide()
+                    binding.include.profileToolbar.hide()
+                    binding.include.burgermenu.hide()
+                    binding.include.shieldToolbar.hide()
+                    binding.include.arrowBack.show()
+                    binding.include.titleToolbar.text = "RANKING"
+                    binding.include.titleToolbar.show()
 
+                    binding.include.arrowBack.setOnClickListener {
+                        navController.navigate(R.id.action_rankingFragment_to_quizFragment)
+                    }
+                }
+
+                R.id.newsDetailsFragment ->{
+                    binding.include.toolbar.hide()
+                    window.statusBarColor = Color.TRANSPARENT
+                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+
+                }
+
+                R.id.historyDetailsFragment ->{
+                    binding.include.toolbar.hide()
+                    window.statusBarColor = Color.TRANSPARENT
+                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                }
 
 
                 else -> {
                     binding.bottomNavigationView.show()
                     binding.include.toolbar.show()
+                    binding.include.profileToolbar.show()
+                    binding.include.burgermenu.show()
+                    binding.include.shieldToolbar.show()
+                    binding.include.arrowBack.hide()
+                    binding.include.titleToolbar.hide()
+                    binding.include.closeCross.hide()
+                    window.statusBarColor = Color.parseColor("#EC1C24")
+                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
                     val imageProfile = FirebaseAuth.getInstance().currentUser?.photoUrl
                     Glide.with(this).load(imageProfile).centerCrop()
                         .into(binding.include.profileToolbar)
+
 
                 }
             }
