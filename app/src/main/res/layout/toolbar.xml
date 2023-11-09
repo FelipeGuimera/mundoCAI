@@ -56,7 +56,6 @@
             tools:text="RANKING"
             android:fontFamily="@font/opensans_bold"
             android:textColor="@color/white"
-            android:textStyle="bold"
             android:textSize="18sp"></TextView>
 
         <de.hdodenhof.circleimageview.CircleImageView
