@@ -49,6 +49,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
+        android:textStyle="bold"
         android:text="¿En que año se fundo el Club Atletico Independiente?"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -131,14 +132,13 @@
 
         <ProgressBar
             android:id="@+id/pbTimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:background="@drawable/gray_progressbar"
             android:indeterminate="false"
             android:max="10"
             android:progress="10"
-
             android:progressDrawable="@drawable/red_progressbar"
             android:rotation="-90"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -160,6 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/opensans_bold"
+                android:textSize="20dp"
                 android:text="10"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"

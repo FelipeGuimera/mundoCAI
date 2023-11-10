@@ -54,5 +54,4 @@ class MatchsHomeAdapters (private val matchsList: List<Matchs>, private val item
 
     }
 
-
 }

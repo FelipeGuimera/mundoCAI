@@ -106,6 +106,11 @@ class MainActivity : AppCompatActivity() {
                             View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 }
 
+                R.id.profileFragment -> {
+                    binding.include.settingsToolbar.show()
+                    binding.include.profileToolbar.hide()
+                }
+
 
                 else -> {
                     binding.bottomNavigationView.show()
@@ -116,6 +121,7 @@ class MainActivity : AppCompatActivity() {
                     binding.include.arrowBack.hide()
                     binding.include.titleToolbar.hide()
                     binding.include.closeCross.hide()
+                    binding.include.settingsToolbar.hide()
                     window.statusBarColor = Color.parseColor("#EC1C24")
                     window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
                     val imageProfile = FirebaseAuth.getInstance().currentUser?.photoUrl

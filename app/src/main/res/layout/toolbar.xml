@@ -66,6 +66,16 @@
             android:layout_gravity="right"
             tools:src="@drawable/ricardobochini"/>
 
+        <ImageView
+            android:id="@+id/settings_toolbar"
+            android:visibility="gone"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_baseline_settings_24"/>
+
+
 
     </androidx.appcompat.widget.Toolbar>
 
