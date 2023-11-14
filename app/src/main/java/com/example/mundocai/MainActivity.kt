@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                     binding.include.profileToolbar.hide()
                     binding.include.burgermenu.hide()
                     binding.include.shieldToolbar.hide()
+                    binding.include.arrowBack.hide()
                     binding.include.closeCross.show()
 
                     binding.include.closeCross.setOnClickListener {
@@ -78,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.rankingFragment -> {
+                    binding.include.closeCross.hide()
                     binding.bottomNavigationView.hide()
                     binding.include.profileToolbar.hide()
                     binding.include.burgermenu.hide()
@@ -92,6 +94,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.newsDetailsFragment ->{
+                    binding.include.closeCross.hide()
                     binding.include.toolbar.hide()
                     window.statusBarColor = Color.TRANSPARENT
                     window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
@@ -100,6 +103,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.historyDetailsFragment ->{
+                    binding.include.closeCross.hide()
                     binding.include.toolbar.hide()
                     window.statusBarColor = Color.TRANSPARENT
                     window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
@@ -107,8 +111,24 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.profileFragment -> {
+                    binding.include.closeCross.hide()
                     binding.include.settingsToolbar.show()
                     binding.include.profileToolbar.hide()
+                }
+
+                R.id.resultsFragment -> {
+                    binding.bottomNavigationView.hide()
+                    binding.include.profileToolbar.hide()
+                    binding.include.burgermenu.hide()
+                    binding.include.shieldToolbar.hide()
+                    binding.include.closeCross.hide()
+                    binding.include.arrowBack.show()
+                    binding.include.titleToolbar.text = "QUIZ COMPLETO"
+                    binding.include.titleToolbar.show()
+
+                    binding.include.arrowBack.setOnClickListener {
+                        navController.navigate(R.id.action_resultsFragment_to_quizFragment)
+                    }
                 }
 
 
