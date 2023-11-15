@@ -18,36 +18,24 @@
 
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/jost_bold"
-        android:text="FELICITACIONES"
+        android:fontFamily="@font/mada_regular"
+        android:layout_marginTop="15dp"
+        android:text="RESPUESTAS CORRECTAS:"
         android:textColor="@color/black"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView8"></TextView>
 
     <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/jost_regular"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/black"
-        android:text="RESPUESTAS CORRECTAS:"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"></TextView>
-
-    <TextView
         android:id="@+id/correct_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:fontFamily="@font/jost_medium"
+        android:textSize="25dp"
+        android:fontFamily="@font/mada_bold"
         android:textColor="@color/black"
         android:text="5"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,11 +48,11 @@
         android:layout_height="wrap_content"
         android:text="PUNTOS"
         android:textColor="@color/black"
-        android:fontFamily="@font/jost_regular"
-        android:textSize="20dp"
+        android:fontFamily="@font/mada_regular"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/correct_answer"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/correct_answer" />
 
     <TextView
         android:id="@+id/points"
@@ -72,17 +60,96 @@
         android:layout_height="wrap_content"
         android:text="25"
         android:textColor="@color/black"
-        android:fontFamily="@font/jost_medium"
-        android:textSize="20dp"
+        android:fontFamily="@font/mada_bold"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"></TextView>
+
+    <ImageView
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:src="@drawable/circulo_rojo"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/points"
+        app:layout_constraintStart_toEndOf="@+id/points"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        " />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/regalo"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/points" />
+
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/flecha_derecha"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+        app:layout_constraintEnd_toStartOf="@+id/points"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mada_bold"
+        android:text="VER VIDEO"
+        android:textColor="#F29C1F"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+        app:layout_constraintEnd_toEndOf="@+id/imageView8"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintTop_toTopOf="@+id/imageView10"></TextView>
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/jost_medium"
+        android:fontFamily="@font/mada_regular"
+        android:text="para ganar más puntos"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"></TextView>
+
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mada_bold"
+        android:text="5"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"></TextView>
+
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/circulo_rojo"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+
+    <TextView
+        android:id="@+id/ranking_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mada_bold"
         android:text="VER MI PUNTAJE EN EL RANKING"
         android:textColor="@color/black"
         android:textSize="15dp"
@@ -92,7 +159,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/go_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="LISTO"
@@ -101,7 +168,7 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_box"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintBottom_toTopOf="@+id/ranking_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

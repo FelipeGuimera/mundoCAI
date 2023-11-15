@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity() {
                     binding.include.shieldToolbar.hide()
                     binding.include.closeCross.hide()
                     binding.include.arrowBack.show()
-                    binding.include.titleToolbar.text = "QUIZ COMPLETO"
+                    binding.include.titleToolbar.text = "RESULTADOS"
                     binding.include.titleToolbar.show()
 
                     binding.include.arrowBack.setOnClickListener {

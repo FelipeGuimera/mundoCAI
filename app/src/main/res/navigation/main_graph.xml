@@ -78,14 +78,18 @@
         tools:layout="@layout/fragment_quiz">
         <action
             android:id="@+id/action_quizFragment_to_questionsFragment"
-            app:destination="@id/questionsFragment" />
-        <action
-            android:id="@+id/action_quizFragment_to_rankingFragment"
-            app:destination="@id/rankingFragment"
+            app:destination="@id/questionsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_quizFragment_to_rankingFragment"
+            app:destination="@id/rankingFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/newsDetailsFragment"
@@ -185,13 +189,18 @@
             app:destination="@id/quizFragment" />
         <action
             android:id="@+id/action_questionsFragment_to_resultsFragment"
-            app:destination="@id/resultsFragment">
+            app:destination="@id/resultsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
             <argument
                 android:name="correctAnswers"
                 app:argType="integer" />
             <argument
                 android:name="points"
                 app:argType="integer" />
+
         </action>
     </fragment>
     <fragment
@@ -210,9 +219,24 @@
         tools:layout="@layout/fragment_results">
         <action
             android:id="@+id/action_resultsFragment_to_rankingFragment"
-            app:destination="@id/rankingFragment" />
+            app:destination="@id/rankingFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
         <action
             android:id="@+id/action_resultsFragment_to_quizFragment"
             app:destination="@id/quizFragment" />
+        <argument
+            android:name="correctAnswers"
+            app:argType="integer" />
+        <argument
+            android:name="points"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_resultsFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/quizFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

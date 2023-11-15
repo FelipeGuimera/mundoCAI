@@ -1,6 +1,5 @@
 package com.example.mundocai.ui.quiz
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -14,14 +13,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.mundocai.R
 import com.example.mundocai.core.Resource
 import com.example.mundocai.data.model.Question
-import com.example.mundocai.data.model.QuestionList
 import com.example.mundocai.data.remote.questions.QuestionsScreenDataSource
 import com.example.mundocai.databinding.FragmentQuestionsBinding
 import com.example.mundocai.domain.questions.QuestionsScreenRepoImpl
 import com.example.mundocai.presentation.questions.QuestionsScreenViewModel
 import com.example.mundocai.presentation.questions.QuestionsScreenViewModelFactory
-import com.example.mundocai.ui.matchs.adapter.MatchsAdapter
-import com.example.mundocai.ui.matchs.adapter.concat.MatchsSectionConcatAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 
 class QuestionsFragment : Fragment(R.layout.fragment_questions) {
@@ -37,6 +33,8 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
     }
 
     private lateinit var timer: CountDownTimer
+    private var totalTime = 25000L // 25 segundos
+    private var interval = 1000L // Intervalo de tick
     private var questions: List<Question> = emptyList()
     private var index: Int = 0
     private var correctAnswers: Int = 0
@@ -47,12 +45,6 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentQuestionsBinding.bind(view)
-
-        val random = java.util.Random()
-        val rand = random.nextInt(7)
-        val database = FirebaseFirestore.getInstance()
-
-
 
 
         viewModel.fetchQuestions().observe(viewLifecycleOwner, Observer { result ->
@@ -91,13 +83,27 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
     }
 
     private fun resetTimer() {
-        timer = object : CountDownTimer(25000, 1000) { // 25 seconds timer
+        val totalTime = 25000L // 25 segundos
+        val interval = 1000L // Intervalo de cada tick
+
+        // Establecer el máximo valor del ProgressBar en función del tiempo total y el intervalo
+        binding.pbTimer.max = (totalTime / interval).toInt()
+
+        timer = object : CountDownTimer(totalTime, interval) {
             override fun onTick(millisUntilFinished: Long) {
-                // Update timer text or do anything needed for countdown
+                // Calcular el progreso restante del temporizador
+                val progress = (millisUntilFinished / interval).toInt()
+                binding.pbTimer.progress = progress
+
+                // Actualizar el texto del temporizador
                 binding.timer.text = (millisUntilFinished / 1000).toString()
             }
 
             override fun onFinish() {
+                // Completar el progreso del ProgressBar al finalizar el temporizador
+                binding.pbTimer.progress = binding.pbTimer.max
+
+                // Lógica al finalizar el temporizador
                 reset()
                 index++
                 setNextQuestion()
@@ -107,6 +113,7 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
 
 
     private fun setNextQuestion() {
+
         if (index < questions.size) {
             binding.questionCounter.text = String.format("%d/%d", (index + 1), questions.size)
             question = questions[index]
@@ -124,7 +131,7 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
 
             val action = QuestionsFragmentDirections.actionQuestionsFragmentToResultsFragment(
                 correctAnswers,
-                points
+                points,
             )
             findNavController().navigate(action)
 

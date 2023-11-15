@@ -11,7 +11,7 @@ class QuestionsScreenDataSource {
     suspend fun getQuestions(): QuestionList {
         val questionList = mutableListOf<Question>()
 
-        val random = Random().nextInt(7) // Genera un número aleatorio entre 0 y 999
+        val random = Random().nextInt(12) // Genera un número aleatorio entre 0 y 999
 
         val querySnapshot = FirebaseFirestore.getInstance().collection("questions")
             .whereGreaterThan("index", random) // Usando el campo "random"
