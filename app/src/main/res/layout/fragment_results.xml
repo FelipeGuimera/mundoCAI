@@ -79,9 +79,9 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/regalo"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/points" />
@@ -153,7 +153,7 @@
         android:text="VER MI PUNTAJE EN EL RANKING"
         android:textColor="@color/black"
         android:textSize="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -57,7 +57,7 @@ class MatchsFragment : Fragment(R.layout.fragment_matchs) {
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     concatAdapter.apply {
-                        addAdapter(MatchsSectionConcatAdapter(MatchsAdapter(result.data.results)))
+                        addAdapter((MatchsAdapter(result.data.results)))
                     }
                     binding.rvMatchs.adapter = concatAdapter
                 }

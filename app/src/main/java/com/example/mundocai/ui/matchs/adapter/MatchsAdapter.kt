@@ -13,8 +13,6 @@ import com.example.mundocai.databinding.MatchItemSectionBinding
 
 class MatchsAdapter (private val matchsList: List<Matchs>): RecyclerView.Adapter<BaseViewHolder<*>>(){
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         val itemBinding = MatchItemSectionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val holder = MatchsViewHolder(itemBinding, parent.context)

@@ -54,13 +54,13 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 )
             ) return@setOnClickListener
 
-            createUser(email, password, username)
+            createUser(email, password, username, profilePicture = "", points = 0)
 
         }
     }
 
-    private fun createUser(email: String, password: String, username: String) {
-        viewModel.signUp(email, password, username).observe(viewLifecycleOwner, Observer { result ->
+    private fun createUser(email: String, password: String, username: String, profilePicture:String, points:Int) {
+        viewModel.signUp(email, password, username, profilePicture, points).observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Resource.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE

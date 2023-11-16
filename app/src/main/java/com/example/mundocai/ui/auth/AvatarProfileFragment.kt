@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.mundocai.R
 import com.example.mundocai.databinding.FragmentAvatarProfileBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -84,7 +86,12 @@ class AvatarProfileFragment : Fragment(R.layout.fragment_avatar_profile) {
                     user?.updateProfile(profileUpdates)
                         ?.addOnCompleteListener { updateProfileTask ->
                             if (updateProfileTask.isSuccessful) {
-                                // Navega a la siguiente pantalla o realiza alguna otra acción
+                                val currentUser = FirebaseAuth.getInstance().currentUser
+                                val userReference = currentUser?.uid?.let { uid ->
+                                    FirebaseFirestore.getInstance().collection("users").document(uid)
+                                }
+                                val imageProfile = FirebaseAuth.getInstance().currentUser?.photoUrl
+                                userReference?.update("profilePicture", imageProfile)
                                 findNavController().navigate(R.id.action_avatarProfileFragment_to_homeFragment)
 
                             }
@@ -98,6 +105,9 @@ class AvatarProfileFragment : Fragment(R.layout.fragment_avatar_profile) {
             findNavController().navigate(R.id.action_avatarProfileFragment_to_homeFragment)
         }
     }
+
+
+
 }
 
 

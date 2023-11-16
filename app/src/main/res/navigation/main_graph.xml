@@ -205,7 +205,7 @@
     </fragment>
     <fragment
         android:id="@+id/rankingFragment"
-        android:name="com.example.mundocai.ui.quiz.RankingFragment"
+        android:name="com.example.mundocai.ui.ranking.RankingFragment"
         android:label="fragment_ranking"
         tools:layout="@layout/fragment_ranking">
         <action

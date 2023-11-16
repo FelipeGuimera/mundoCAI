@@ -17,6 +17,7 @@ import com.example.mundocai.databinding.FragmentQuizBinding
 import com.example.mundocai.domain.auth.AuthRepoImpl
 import com.example.mundocai.presentation.auth.AuthViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -40,7 +41,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         // Verifica si el usuario ha iniciado sesión
         if (currentUser != null) {
-            val username = FirebaseAuth.getInstance().currentUser?.displayName // Obtener el nombre del usuario
+            val username =
+                FirebaseAuth.getInstance().currentUser?.displayName // Obtener el nombre del usuario
             val email = FirebaseAuth.getInstance().currentUser?.email
 
             binding.username.text = username ?: "Nombre de usuario no disponible"
@@ -67,7 +69,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     }
 
+    fun updatePhotoUrlInFirestore(photoUrl: String) {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val userReference = currentUser?.uid?.let { uid ->
+            FirebaseFirestore.getInstance().collection("users").document(uid)
+        }
 
+        userReference?.update("profilePicture", photoUrl)
+    }
 }
 
 

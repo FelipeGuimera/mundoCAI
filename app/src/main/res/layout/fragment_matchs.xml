@@ -21,9 +21,24 @@
 
     </RelativeLayout>
 
+
+    <TextView
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PARTIDOS"
+        android:textColor="#EC1C24"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_extra_bold"
+        android:layout_gravity="center"/>
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_matchs"

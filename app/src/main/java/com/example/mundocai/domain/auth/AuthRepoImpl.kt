@@ -8,8 +8,8 @@ class AuthRepoImpl(private val dataSource: AuthDataSource) : AuthRepo {
     override suspend fun signIn(email: String, password: String): FirebaseUser? =
         dataSource.signIn(email, password)
 
-    override suspend fun signUp(email: String, password: String, username: String): FirebaseUser? =
-        dataSource.singUp(email, password, username)
+    override suspend fun signUp(email: String, password: String, username: String, profilePicture:String, points:Int): FirebaseUser? =
+        dataSource.singUp(email, password, username, profilePicture, points )
 
     override suspend fun signAnonymous(): FirebaseUser? = dataSource.signAnonymous()
 
