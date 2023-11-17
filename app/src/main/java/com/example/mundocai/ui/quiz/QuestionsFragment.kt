@@ -3,9 +3,12 @@ package com.example.mundocai.ui.quiz
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -78,7 +81,6 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
         binding.option2.setOnClickListener { onClick(it) }
         binding.option3.setOnClickListener { onClick(it) }
         binding.option4.setOnClickListener { onClick(it) }
-
 
     }
 

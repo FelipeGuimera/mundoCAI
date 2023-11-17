@@ -45,10 +45,19 @@
         android:id="@+id/scoreTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
+
         android:textColor="@color/black"
         android:fontFamily="@font/mada_bold"
+        android:layout_marginEnd="5dp"
         android:text="1000"
         android:textSize="16sp"
         android:layout_gravity="center_vertical|end" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/circulo_rojo"
+        android:layout_marginEnd="30dp"
+
+        android:layout_gravity="center_vertical|end"></ImageView>
 </LinearLayout>
