@@ -82,6 +82,8 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
         binding.option3.setOnClickListener { onClick(it) }
         binding.option4.setOnClickListener { onClick(it) }
 
+        backQuestions()
+
     }
 
     private fun resetTimer() {
@@ -184,6 +186,14 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
                     setNextQuestion() // Mostrar la siguiente pregunta
                 }, 2000) // Delay de 3 segundos (3000 milisegundos)
             }
+        }
+    }
+
+    private fun backQuestions() {
+        binding.crossQuestions.setOnClickListener {
+            val exitDialog = ExitQuestionDialog()
+            exitDialog.show(childFragmentManager, "ExitQuestionDialog")
+
         }
     }
 

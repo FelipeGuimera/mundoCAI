@@ -66,15 +66,8 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.questionsFragment -> {
                     binding.bottomNavigationView.hide()
-                    binding.include.profileToolbar.hide()
-                    binding.include.burgermenu.hide()
-                    binding.include.shieldToolbar.hide()
-                    binding.include.arrowBack.hide()
-                    binding.include.closeCross.show()
+                    binding.include.toolbar.hide()
 
-                    binding.include.closeCross.setOnClickListener {
-                        navController.navigate(R.id.action_questionsFragment_to_quizFragment)
-                    }
 
                 }
 
