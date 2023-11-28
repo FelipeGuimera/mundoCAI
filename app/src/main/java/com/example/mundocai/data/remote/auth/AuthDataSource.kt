@@ -22,7 +22,7 @@ class AuthDataSource {
         return authResult.user
     }
 
-    suspend fun singUp(email: String, password: String, username: String, profilePicture:String, points:Int): FirebaseUser? {
+    suspend fun signUp(email: String, password: String, username: String, profilePicture:String, points:Int): FirebaseUser? {
         val authResult =
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).await()
         authResult.user?.uid?.let { uid ->

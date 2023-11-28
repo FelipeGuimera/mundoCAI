@@ -31,6 +31,7 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
         updateUserPoints()
 
 
+
         binding.goHome.setOnClickListener {
             findNavController().navigate(R.id.action_resultsFragment_to_homeFragment)
         }
@@ -51,7 +52,8 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
                     if (documentSnapshot.exists()) {
                         val userPoints = documentSnapshot.getLong("points") ?: 0
                         // Sumar los puntos del usuario con los puntos actuales
-                        val totalPoints = args.points + userPoints
+                        val gamePoints = args.points
+                        val totalPoints = gamePoints + userPoints
 
                         firestoreDB.collection("users")
                             .document(currentUserUid)

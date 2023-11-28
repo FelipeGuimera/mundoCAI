@@ -115,16 +115,18 @@
                         android:layout_gravity="center">
 
                         <ImageView
+                            android:id="@+id/copa_ganador"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
-                            android:src="@drawable/taza" />
+                            android:src="@drawable/tazagris" />
 
                         <ProgressBar
+                            android:id="@+id/progreso_ganador"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"
-                            android:progress="100"
+                            android:progress="0"
                             android:layout_gravity="center"/>
 
                         <TextView
@@ -141,12 +143,14 @@
                         android:layout_gravity="center">
 
                         <ImageView
+                            android:id="@+id/copa_invicto"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/tazagris" />
 
                         <ProgressBar
+                            android:id="@+id/progreso_invicto"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"
@@ -168,12 +172,14 @@
                         android:layout_gravity="center">
 
                         <ImageView
+                            android:id="@+id/copa_maestro"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/tazagris" />
 
                         <ProgressBar
+                            android:id="@+id/progreso_maestro"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"
@@ -196,12 +202,14 @@
                         android:layout_gravity="center">
 
                         <ImageView
+                            android:id="@+id/copa_mistica"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/tazagris" />
 
                         <ProgressBar
+                            android:id="@+id/progreso_mistica"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"
@@ -223,16 +231,18 @@
                         android:layout_gravity="center">
 
                         <ImageView
+                            android:id="@+id/copa_copero"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
-                            android:src="@drawable/taza" />
+                            android:src="@drawable/tazagris" />
 
                         <ProgressBar
+                            android:id="@+id/progreso_copero"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"
-                            android:progress="100"
+                            android:progress="0"
                             android:layout_gravity="center"/>
 
                         <TextView
@@ -250,16 +260,18 @@
                         android:layout_gravity="center">
 
                         <ImageView
+                            android:id="@+id/copa_estrella"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/tazagris" />
 
                         <ProgressBar
+                            android:id="@+id/progreso_estrella"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"
-                            android:progress="50"
+                            android:progress="0"
                             android:layout_gravity="center"/>
 
                         <TextView
@@ -278,12 +290,15 @@
                         android:layout_gravity="center">
 
                         <ImageView
+                            android:id="@+id/copa_historiador"
+                            android:layout_gravity="center"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/tazagris" />
 
                         <ProgressBar
+                            android:id="@+id/progreso_historiador"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"
@@ -294,7 +309,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Ganador" />
+                            android:text="Historiador" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -305,12 +320,14 @@
                         android:layout_gravity="center">
 
                         <ImageView
+                            android:id="@+id/copa_rey"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/tazagris" />
 
                         <ProgressBar
+                            android:id="@+id/progreso_rey"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"
@@ -332,12 +349,14 @@
                         android:layout_gravity="center">
 
                         <ImageView
+                            android:id="@+id/copa_capitan"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/tazagris" />
 
                         <ProgressBar
+                            android:id="@+id/progreso_capitan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"

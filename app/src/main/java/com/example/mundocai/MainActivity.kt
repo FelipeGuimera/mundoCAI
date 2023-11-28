@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.rankingFragment -> {
+                    binding.include.toolbar.show()
                     binding.include.closeCross.hide()
                     binding.bottomNavigationView.hide()
                     binding.include.profileToolbar.hide()
@@ -104,6 +105,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.profileFragment -> {
+                    binding.include.toolbar.show()
                     binding.include.closeCross.hide()
                     binding.include.settingsToolbar.show()
                     binding.include.profileToolbar.hide()

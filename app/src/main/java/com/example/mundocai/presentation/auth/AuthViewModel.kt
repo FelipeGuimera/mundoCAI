@@ -20,7 +20,7 @@ class AuthViewModel(private val repo: AuthRepo) : ViewModel() {
     fun signUp(email: String, password: String, username: String, profilePicture:String, points:Int) = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(Resource.Success(repo.signUp(email, password, username,profilePicture, points )))
+            emit(Resource.Success(repo.signUp(email, password, username,profilePicture, points)))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }

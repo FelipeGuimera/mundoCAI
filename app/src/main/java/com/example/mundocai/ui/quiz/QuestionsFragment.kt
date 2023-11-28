@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toolbar
+import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -36,6 +37,7 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
     }
 
     private lateinit var timer: CountDownTimer
+    private var answerSelected: Boolean = false
     private var totalTime = 25000L // 25 segundos
     private var interval = 1000L // Intervalo de tick
     private var questions: List<Question> = emptyList()
@@ -48,6 +50,9 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentQuestionsBinding.bind(view)
+
+
+
 
 
         viewModel.fetchQuestions().observe(viewLifecycleOwner, Observer { result ->
@@ -83,6 +88,7 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
         binding.option4.setOnClickListener { onClick(it) }
 
         backQuestions()
+        backPressed()
 
     }
 
@@ -152,14 +158,17 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
     }
 
     private fun checkAnswer(textView: TextView) {
-        val selectedAnswer = textView.text.toString()
-        if (selectedAnswer == question.answer) {
-            correctAnswers++
-            points = correctAnswers * 5
-            textView.setBackgroundResource(R.drawable.option_correct)
-        } else {
-            showAnswer()
-            textView.setBackgroundResource(R.drawable.option_wrong)
+        if (!answerSelected) {
+            answerSelected = true // Marcar que se ha seleccionado una respuesta
+            val selectedAnswer = textView.text.toString()
+            if (selectedAnswer == question.answer) {
+                correctAnswers++
+                points = correctAnswers * 5
+                textView.setBackgroundResource(R.drawable.option_correct)
+            } else {
+                showAnswer()
+                textView.setBackgroundResource(R.drawable.option_wrong)
+            }
         }
     }
 
@@ -177,14 +186,15 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
                 val selected = view as TextView
                 checkAnswer(selected)
 
-                // Agregar un delay de 3 segundos antes de mostrar la siguiente pregunta
-                view.isEnabled = false // Deshabilitar las opciones para evitar que el usuario haga clic mientras se muestra la respuesta
+                view.isEnabled = false // Deshabilitar la opción seleccionada
 
                 Handler().postDelayed({
-                    view.isEnabled = true // Habilitar las opciones nuevamente después del retraso
+                    answerSelected =
+                        false // Permitir seleccionar otra respuesta después del retraso
+                    view.isEnabled = true // Habilitar la opción seleccionada nuevamente
                     index++ // Incrementar el índice para pasar a la siguiente pregunta
                     setNextQuestion() // Mostrar la siguiente pregunta
-                }, 2000) // Delay de 3 segundos (3000 milisegundos)
+                }, 2000) // Delay de 2 segundos (2000 milisegundos)
             }
         }
     }
@@ -196,5 +206,14 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
 
         }
     }
+
+
+    private fun backPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            val exitDialog = ExitQuestionDialog()
+            exitDialog.show(childFragmentManager, "ExitQuestionDialog")
+        }
+    }
+
 
 }

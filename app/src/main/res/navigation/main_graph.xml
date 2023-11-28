@@ -70,6 +70,12 @@
         <action
             android:id="@+id/action_profileFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="gamePoints"
+            app:argType="integer" />
+        <argument
+            android:name="totalPoints"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
@@ -243,5 +249,8 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/quizFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_resultsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>
