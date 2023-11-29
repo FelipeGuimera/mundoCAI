@@ -112,13 +112,12 @@ class HomeFragment : Fragment(R.layout.fragment_home), MatchsHomeAdapters.OnMatc
 
 
     fun OnImagesClick(images: Images) {
-        findNavController()
-            .navigate(R.id.imagesCarouselFragment,
-                null,
-                NavOptions.Builder()
-                    .setPopUpTo(R.id.homeFragment, true)
-                    .build()
-            )
+        val action = HomeFragmentDirections.actionHomeFragmentToImagesCarouselFragment(
+            images.imageCarousel1,
+            images.imageCarousel2,
+            images.imageCarousel3,
+        )
+        findNavController().navigate(action)
     }
 
 }

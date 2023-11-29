@@ -33,7 +33,9 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
 
 
         binding.goHome.setOnClickListener {
+            // Navegar de resultados a homeFragment y eliminar de la pila de navegación
             findNavController().navigate(R.id.action_resultsFragment_to_homeFragment)
+            findNavController().popBackStack(R.id.quizFragment, false)
         }
 
         binding.rankingText.setOnClickListener {

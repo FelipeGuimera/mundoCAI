@@ -126,6 +126,14 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
+                R.id.imagesCarouselFragment->{
+                    binding.bottomNavigationView.hide()
+                    binding.include.toolbar.hide()
+                    window.statusBarColor = Color.BLACK
+                }
+
+
+
 
                 else -> {
                     binding.bottomNavigationView.show()
