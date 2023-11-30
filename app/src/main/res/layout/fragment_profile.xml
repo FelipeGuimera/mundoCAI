@@ -38,6 +38,15 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent" />
 
+                <ImageView
+                    android:id="@+id/change_profile_image"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView3"
+                    app:layout_constraintStart_toEndOf="@+id/avatar_profile"
+                    app:layout_constraintTop_toTopOf="@+id/avatar_profile" />
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/avatar_profile"
                     android:layout_width="110dp"

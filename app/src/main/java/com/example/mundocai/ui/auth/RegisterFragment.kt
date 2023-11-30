@@ -13,6 +13,7 @@ import com.example.mundocai.data.remote.auth.AuthDataSource
 import com.example.mundocai.databinding.FragmentRegisterBinding
 import com.example.mundocai.domain.auth.AuthRepoImpl
 import com.example.mundocai.presentation.auth.AuthViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
@@ -54,7 +55,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 )
             ) return@setOnClickListener
 
-            createUser(email, password, username, profilePicture = "", points = 0)
+            checkUsernameAvailability(username, email, password)
 
         }
     }
@@ -115,6 +116,27 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             return true
         }
         return false
+    }
+
+    private fun checkUsernameAvailability(username: String, email: String, password: String) {
+        val db = FirebaseFirestore.getInstance()
+        val usersCollection = db.collection("users")
+
+        usersCollection.whereEqualTo("username", username)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    // El nombre de usuario ya está en uso
+                    Toast.makeText(requireContext(), "El nombre de usuario ya está en uso", Toast.LENGTH_SHORT).show()
+                } else {
+                    // El nombre de usuario está disponible, procede a crear el usuario
+                    createUser(email, password, username, profilePicture = "", points = 0)
+                }
+            }
+            .addOnFailureListener { e ->
+                // Manejo de error en la consulta
+                Toast.makeText(requireContext(), "Error al verificar el nombre de usuario: $e", Toast.LENGTH_SHORT).show()
+            }
     }
 
 }

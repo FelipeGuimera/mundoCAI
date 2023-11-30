@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -44,6 +45,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         getPoints()
         bindingProfile()
+        changeProfileImage()
     }
 
     private fun bindingProfile() {
@@ -148,6 +150,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.copaCapitan.setImageResource(R.drawable.taza)
             binding.progresoCapitan.progress = 100
             capitanUnlocked = true
+        }
+    }
+
+    private fun changeProfileImage(){
+        binding.changeProfileImage.setOnClickListener{
+            findNavController().navigate(R.id.action_profileFragment_to_avatarProfileFragment)
+
         }
     }
 

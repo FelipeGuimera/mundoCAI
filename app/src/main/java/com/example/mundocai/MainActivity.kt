@@ -151,7 +151,6 @@ class MainActivity : AppCompatActivity() {
                     Glide.with(this).load(imageProfile).centerCrop()
                         .into(binding.include.profileToolbar)
 
-
                 }
             }
         }

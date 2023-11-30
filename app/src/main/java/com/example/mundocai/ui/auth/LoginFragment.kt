@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.mundocai.R
 import com.example.mundocai.core.Resource
+import com.example.mundocai.data.model.User
 import com.example.mundocai.data.remote.auth.AuthDataSource
 import com.example.mundocai.databinding.FragmentLoginBinding
 import com.example.mundocai.domain.auth.AuthRepoImpl
@@ -26,6 +27,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 const val REQUEST_CODE_SIGN_IN = 0
@@ -161,11 +163,40 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // El inicio de sesión con Google se completó con éxito
+                    val isNewUser = task.result?.additionalUserInfo?.isNewUser ?: false
+
                     val user = firebaseAuth.currentUser
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    user?.let {
+                        val newUser = User(
+                            email = user.email ?: "",
+                            username = user.displayName ?: "",
+                            profilePicture = user.photoUrl?.toString() ?: "",
+                            points = 0
+                        )
+
+                        val db = FirebaseFirestore.getInstance()
+                        val usersCollection = db.collection("users")
+
+                        usersCollection.document(user.uid).get()
+                            .addOnSuccessListener { documentSnapshot ->
+                                if (documentSnapshot.exists()) {
+                                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                                } else {
+                                    usersCollection.document(user.uid).set(newUser)
+                                        .addOnSuccessListener {
+                                            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                                        }
+                                        .addOnFailureListener { e ->
+                                            Log.e(TAG, "Error al crear el documento: $e")
+                                        }
+                                }
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e(TAG, "Error al obtener el documento: $e")
+                            }
+                    }
                 } else {
-                    // El inicio de sesión con Google falló, manejar el error
+                    Log.e(TAG, "signInWithCredential:failure", task.exception)
                 }
             }
     }
