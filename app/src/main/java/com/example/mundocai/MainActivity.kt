@@ -109,6 +109,24 @@ class MainActivity : AppCompatActivity() {
                     binding.include.closeCross.hide()
                     binding.include.settingsToolbar.show()
                     binding.include.profileToolbar.hide()
+                    binding.bottomNavigationView.show()
+                    binding.include.settingsToolbar.setOnClickListener {
+                        navController.navigate(R.id.settingsFragment)
+                    }
+                }
+
+                R.id.settingsFragment->{
+                    binding.bottomNavigationView.hide()
+                    binding.include.toolbar.show()
+                    binding.include.profileToolbar.hide()
+                    binding.include.arrowBack.show()
+                    binding.include.burgermenu.hide()
+                    binding.include.shieldToolbar.hide()
+                    binding.include.settingsToolbar.hide()
+
+                    binding.include.arrowBack.setOnClickListener {
+                        navController.navigate(R.id.profileFragment)
+                    }
                 }
 
                 R.id.resultsFragment -> {

@@ -211,14 +211,14 @@
                         android:layout_gravity="center">
 
                         <ImageView
-                            android:id="@+id/copa_mistica"
+                            android:id="@+id/copa_capitan"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/tazagris" />
 
                         <ProgressBar
-                            android:id="@+id/progreso_mistica"
+                            android:id="@+id/progreso_capitan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"
@@ -229,7 +229,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Mistica" />
+                            android:text="Capitan" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -358,14 +358,14 @@
                         android:layout_gravity="center">
 
                         <ImageView
-                            android:id="@+id/copa_capitan"
+                            android:id="@+id/copa_mistica"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/tazagris" />
 
                         <ProgressBar
-                            android:id="@+id/progreso_capitan"
+                            android:id="@+id/progreso_mistica"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="?android:attr/progressBarStyleHorizontal"
@@ -376,7 +376,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Capitan" />
+                            android:text="Mistica" />
                     </LinearLayout>
                 </GridLayout>
 

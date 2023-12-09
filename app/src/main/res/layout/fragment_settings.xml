@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Elemento "Información de Ajustes" con flecha a la derecha -->
+    <RelativeLayout
+        android:id="@+id/settings_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvSettingsInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INFORMACIÓN DE AJUSTES"
+            android:fontFamily="@font/jost_medium"
+
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:padding="16dp"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/flechaderecha"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <!-- Línea gris -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#808080"/>
+
+    <!-- Elemento "Notificaciones" con botón de encendido/apagado -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvSettingsNotifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOTIFICACIONES"
+            android:fontFamily="@font/jost_medium"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:padding="16dp"/>
+
+        <Switch
+            android:id="@+id/switchNotifications"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <!-- Línea gris -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#808080"/>
+
+    <!-- Elemento "Cerrar Sesión" con drawable de cerrar sesión -->
+    <RelativeLayout
+        android:id="@+id/sign_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvSettingsLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CERRAR SESIÓN"
+            android:fontFamily="@font/jost_medium"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:padding="16dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/cerrarsesion" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -25,21 +25,22 @@ class RankingAdapter (private val rankingList: List<User>): RecyclerView.Adapter
         }
     }
 
-    override fun getItemCount(): Int = rankingList.size
 
+    override fun getItemCount(): Int {
+        // Devuelve el mínimo entre el tamaño de la lista y 15
+        return minOf(rankingList.size, 47)
+    }
 
-    private inner class RankingViewHolder(val binding: UserItemBinding, val context: Context): BaseViewHolder<User>(binding.root){
+    private inner class RankingViewHolder(val binding: UserItemBinding, val context: Context) :
+        BaseViewHolder<User>(binding.root) {
         override fun bind(item: User) {
-
             Glide.with(context).load(item.profilePicture).centerCrop().into(binding.userImageView)
             binding.usernameTextView.text = item.username
             binding.scoreTextView.text = item.points.toString()
-            binding.positionTextView.text = (position + 3).toString()
-
-
+            // La posición se muestra sumando 1 a la posición actual
+            binding.positionTextView.text = (bindingAdapterPosition + 4).toString()
         }
-
     }
-
-
 }
+
+

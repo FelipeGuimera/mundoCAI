@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.TooltipCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -13,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.mundocai.R
 import com.example.mundocai.core.Resource
+import com.example.mundocai.core.hide
 import com.example.mundocai.data.model.User
 import com.example.mundocai.data.remote.auth.AuthDataSource
 import com.example.mundocai.databinding.FragmentProfileBinding
@@ -46,6 +48,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         getPoints()
         bindingProfile()
         changeProfileImage()
+        showAchievementsText()
     }
 
     private fun bindingProfile() {
@@ -61,7 +64,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         } else {
             // Manejar el caso en el que el usuario no haya iniciado sesión
-            binding.username.text = "Usuario no identificado"
+            binding.username.text = "Invitado"
         }
 
         val imageProfile = FirebaseAuth.getInstance().currentUser?.photoUrl
@@ -69,10 +72,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         if (imageProfile != null) {
             Glide.with(this).load(imageProfile).centerCrop().into(binding.avatarProfile)
         } else {
-            // Mostrar una imagen de placeholder o un texto en lugar de la foto
-            // Por ejemplo, puedes usar un recurso de imagen en tu proyecto o un recurso de texto.
-            Glide.with(this).load(R.drawable.ricardobochini).centerCrop()
+            Glide.with(this).load(R.drawable.rounded_button).centerCrop()
                 .into(binding.avatarProfile)
+            binding.changeProfileImage.hide()
         }
     }
 
@@ -102,55 +104,66 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.copaGanador.setImageResource(R.drawable.taza)
             binding.progresoGanador.progress = 100
             ganadorUnlocked = true
+
         }
 
         if (!invictoUnlocked && userPoints >= 200) {
             binding.copaInvicto.setImageResource(R.drawable.taza)
             binding.progresoInvicto.progress = 100
             invictoUnlocked = true
+
+
         }
 
         if (!maestroUnlocked && userPoints >= 300) {
             binding.copaMaestro.setImageResource(R.drawable.taza)
             binding.progresoMaestro.progress = 100
             maestroUnlocked = true
+
         }
 
-        if (!misticaUnlocked && userPoints >= 400) {
-            binding.copaMistica.setImageResource(R.drawable.taza)
-            binding.progresoMistica.progress = 100
-            misticaUnlocked = true
+        if (!capitanUnlocked && userPoints >= 400) {
+            binding.copaCapitan.setImageResource(R.drawable.taza)
+            binding.progresoCapitan.progress = 100
+            capitanUnlocked = true
+
         }
 
         if (!coperoUnlocked && userPoints >= 500) {
             binding.copaCopero.setImageResource(R.drawable.taza)
             binding.progresoCopero.progress = 100
             coperoUnlocked = true
+
         }
 
         if (!estrellaUnlocked && userPoints >= 1000) {
             binding.copaEstrella.setImageResource(R.drawable.taza)
             binding.progresoEstrella.progress = 100
             estrellaUnlocked = true
+
         }
 
         if (!historiadorUnlocked && userPoints >= 1500) {
             binding.copaHistoriador.setImageResource(R.drawable.taza)
             binding.progresoHistoriador.progress = 100
             historiadorUnlocked = true
+
         }
 
         if (!reyUnlocked && userPoints >= 2000) {
             binding.copaRey.setImageResource(R.drawable.taza)
             binding.progresoRey.progress = 100
             reyUnlocked = true
+
         }
 
-        if (!capitanUnlocked && userPoints >= 5000) {
-            binding.copaCapitan.setImageResource(R.drawable.taza)
-            binding.progresoCapitan.progress = 100
-            capitanUnlocked = true
+        if (!misticaUnlocked && userPoints >= 5000) {
+            binding.copaMistica.setImageResource(R.drawable.taza)
+            binding.progresoMistica.progress = 100
+            misticaUnlocked = true
+
         }
+
     }
 
     private fun changeProfileImage(){
@@ -158,6 +171,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             findNavController().navigate(R.id.action_profileFragment_to_avatarProfileFragment)
 
         }
+    }
+
+    private fun showAchievementsText(){
+        TooltipCompat.setTooltipText(binding.copaGanador, "Alcanza la cima con 100 puntos en el ranking")
+        TooltipCompat.setTooltipText(binding.copaInvicto, "Alcanza los 200 puntos en el ranking")
+        TooltipCompat.setTooltipText(binding.copaMaestro, "Alcanza la maestría con 300 puntos en el ranking")
+        TooltipCompat.setTooltipText(binding.copaCapitan, "Sé un líder con 400 puntos en el ranking")
+        TooltipCompat.setTooltipText(binding.copaCopero, "Transformate en Copero con 500 puntos en el ranking")
+        TooltipCompat.setTooltipText(binding.copaEstrella, "Conviértete en la estrella del juego con 1000 puntos en el ranking")
+        TooltipCompat.setTooltipText(binding.copaHistoriador, "Conoce la historia con 1500 puntos en el ranking")
+        TooltipCompat.setTooltipText(binding.copaRey, "Sé el rey indiscutible con 2000 puntos en el ranking")
+        TooltipCompat.setTooltipText(binding.copaMistica, "Desbloquea la mística copera con 5000 puntos en el ranking")
+
     }
 
 

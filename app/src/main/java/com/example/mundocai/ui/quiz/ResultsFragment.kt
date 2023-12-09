@@ -20,6 +20,7 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
 
 
     private val firestoreDB = FirebaseFirestore.getInstance()
+    private var pointsUpdated = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,7 +29,10 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
         binding.correctAnswer.text = args.correctAnswers.toString()
         binding.points.text = args.points.toString()
 
-        updateUserPoints()
+        if (!pointsUpdated) {
+            updateUserPoints()
+            pointsUpdated = true
+        }
 
 
 
@@ -60,6 +64,7 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
                         firestoreDB.collection("users")
                             .document(currentUserUid)
                             .update("points", totalPoints)
+                            pointsUpdated = true
                     }
                 }
                 .addOnFailureListener { exception ->
