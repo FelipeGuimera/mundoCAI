@@ -41,7 +41,7 @@ class AuthDataSource {
             authResult.user
         } catch (e: Exception) {
             Log.e("Auth", "Error en la autenticación anónima: ${e.message}")
-            null // Devolver null en caso de error
+            null
         }
     }
 

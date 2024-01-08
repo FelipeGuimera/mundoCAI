@@ -76,10 +76,12 @@ class AvatarProfileFragment : Fragment(R.layout.fragment_avatar_profile) {
         }
 
         binding.selectImage.setOnClickListener {
+            // Deshabilitar el botón mientras se realizan las operaciones
+            binding.selectImage.isEnabled = false
+
             val user = Firebase.auth.currentUser
             storageReference?.downloadUrl
                 ?.addOnSuccessListener { uri ->
-                    // Actualiza el perfil del usuario con la URL de la imagen
                     val profileUpdates = UserProfileChangeRequest.Builder()
                         .setPhotoUri(uri)
                         .build()
@@ -93,9 +95,17 @@ class AvatarProfileFragment : Fragment(R.layout.fragment_avatar_profile) {
                                 val imageProfile = FirebaseAuth.getInstance().currentUser?.photoUrl
                                 userReference?.update("profilePicture", imageProfile)
                                 findNavController().navigate(R.id.action_avatarProfileFragment_to_homeFragment)
-
                             }
+
+                            // Habilitar el botón después de que se complete el proceso
+                            binding.selectImage.isEnabled = true
                         }
+                }
+                ?.addOnFailureListener { exception ->
+                    // Manejar cualquier error de descarga de URL aquí
+
+                    // Habilitar el botón en caso de error
+                    binding.selectImage.isEnabled = true
                 }
         }
 
